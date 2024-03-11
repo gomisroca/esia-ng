@@ -1,0 +1,35 @@
+<div
+*ngIf="exh"
+class="flex flex-col group my-4 mx-auto px-4 w-screen lg:px-0 lg:w-[1000px] z-20">
+        <div 
+        class="border-l-4 border-black">
+            <a href={{exh.url}}> 
+                <img src="{{exh.image}}"/>
+            </a>
+        </div>
+        <div 
+        class="border-l-4 border-b-4 border-black p-4 text-center bg-white h-fit">
+            <div class="pb-3 border-b-2 border-black">
+                <div class="font-semibold p-1 text-xl uppercase">{{exh.title}}</div>
+            </div>
+            <div class="p-2 py-3 text-xs text-left border-b-2 border-black">
+                <div class="flex justify-between border-black/20">
+                    <span class="font-bold text-lg">{{exh.start}}</span> until  <span class="font-bold text-lg">{{exh.end}}</span>
+                </div>
+                <div *ngIf="exh.description" class="text-base flex justify-between border-t-2 border-b-2 border-black/20 my-1 py-1">
+                    {{exh.description}}
+                </div>
+            </div>
+            <div>
+                <button mat-button
+                (click)="productToCart(exh)"
+                class="w-full hover:bg-[aquamarine] text-black border-b-4 border-white hover:border-black mt-4 uppercase font-semibold">
+                Get Tickets</button>
+            </div>
+        </div>
+</div>
+<div
+*ngIf="!exh"
+class="flex justify-center w-[1000px]">
+    <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+</div>

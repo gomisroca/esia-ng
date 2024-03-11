@@ -1,0 +1,36 @@
+.mat-mdc-icon-button {
+    padding: 0px !important;
+    height: 25px !important;
+    width: 50px !important;
+}
+.mat-mdc-card{
+    box-shadow:none !important;
+    background-color: unset;
+    cursor: auto;
+}
+.checkout:hover{
+    background-color: aquamarine !important;
+    cursor: pointer !important;
+}
+.checkout .mat-mdc-card:hover{
+    cursor: pointer !important;
+}
+.mat-mdc-menu-panel{
+    border-right: 4px solid black;
+    border-bottom: 2px solid black;
+    width: 300px !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+}
+::ng-deep .mat-mdc-button{
+    border-radius: 0px !important;
+}
+.mat-mdc-menu-item{
+    padding: 0px !important;
+}
+::ng-deep .mat-mdc-menu-content {
+    padding: 0px !important;
+}
+::ng-deep .mat-icon{
+    margin-right: 0px !important;
+}

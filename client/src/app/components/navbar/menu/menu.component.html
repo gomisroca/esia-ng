@@ -1,0 +1,65 @@
+<div class="flex flex-col md:flex-row">
+    <mat-form-field  class="w-[200px] mx-auto md:mx-2">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Search...">
+    </mat-form-field>
+    <div class="py-4 flex justify-around md:py-0">
+        <button 
+        mat-button 
+        [matMenuTriggerFor]="exhibitionsMenu"
+        >
+            Exhibitions
+        </button>
+        <mat-menu #exhibitionsMenu="matMenu">
+            <ng-template matMenuContent>
+                <div
+                *ngIf="!exhibitions"
+                class="flex justify-center w-[1000px]">
+                    <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+                </div>
+                <div *ngFor="let exh of exhibitions | slice:0:3">
+                    <button mat-menu-item class="h-[120px]">
+                        <a href="/exhibitions/{{exh.id}}">
+                            <mat-card class="h-[120px]">
+                                <img  
+                                class="h-[120px] w-full absolute opacity-40" 
+                                src="{{exh.image}}">
+                                <mat-card-header class="z-10">
+                                    <mat-card-title style="font-size: 18px;">
+                                        {{exh.title}}
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        {{exh.start}} until {{exh.end}}
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+                            </mat-card>
+                        </a>
+                    </button>
+                </div>
+                <button mat-menu-item class="h-[60px]">
+                    <a routerLink="/exhibitions">
+                        <mat-card class="h-[60px]">
+                            <mat-card-header class="z-10">
+                                <mat-card-title 
+                                style="display: flex !important;" 
+                                class="items-center">
+                                    See More
+                                    <mat-icon>arrow_forward</mat-icon>
+                                </mat-card-title>
+                            </mat-card-header>
+                        </mat-card>
+                    </a>
+                </button>
+            </ng-template>
+        </mat-menu>
+
+        <button mat-button>
+            <a routerLink="/collection">Collection</a>
+        </button>
+
+        <button mat-button>
+            <a routerLink="/artists">Artists</a>
+        </button>
+    </div>
+    <app-cart></app-cart>
+</div>

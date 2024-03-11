@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Roboto&family=Shadows+Into+Light&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #e7e7e7;
+    color: #151515;
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-arvo{
+    font-family: 'Arvo', serif;
+}
+.font-sil{
+    font-family: 'Shadows Into Light', cursive;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

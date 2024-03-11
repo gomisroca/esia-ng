@@ -1,0 +1,60 @@
+<div class="flex mt-1">
+    <button 
+    mat-icon-button
+    (click)="refresh()"
+    [matMenuTriggerFor]="cartMenu">
+        <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <mat-menu #cartMenu="matMenu">
+        <ng-template matMenuContent>
+            <div
+            *ngIf="!cart"
+            class="flex justify-center w-[1000px]">
+                <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+            </div>
+            <div *ngFor="let item of cart">
+                <div mat-menu-item class="h-[120px]">
+                        <mat-card class="h-[120px]">
+                            <img  
+                            class="h-[120px] w-[35%] absolute" 
+                            src="{{item.thumbnail || item.image}}">
+                            <mat-card-header class=" flex flex-col justify-end z-10 text-right">
+                                <mat-card-subtitle>
+                                    {{item.artist ? item.artist : 'Exhibition Ticket'}}
+                                </mat-card-subtitle>
+                                <mat-card-title style="background-color: #ffffff6c; font-size: 18px;">
+                                    {{item.title}}
+                                </mat-card-title>
+                                <div class="flex flex-row justify-end z-10 text-right">
+                                    <mat-card-title style="font-size: 18px;">
+                                        {{item.price  || item.ticket_price}}EUR
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        <button 
+                                        (click)="removeFromCart(item)"
+                                        mat-icon-button>
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </mat-card-subtitle>
+                                </div>
+                            </mat-card-header>
+                        </mat-card>
+                </div>
+            </div>
+            <button mat-menu-item class="checkout h-[60px]">
+                <a routerLink="/checkout">
+                    <mat-card class="h-[60px]">
+                        <mat-card-header class="z-10">
+                            <mat-card-title 
+                            style="display: flex !important;" 
+                            class="items-center">
+                                Go to Checkout
+                                <mat-icon>arrow_forward</mat-icon>
+                            </mat-card-title>
+                        </mat-card-header>
+                    </mat-card>
+                </a>
+            </button>
+        </ng-template>
+    </mat-menu>
+</div>

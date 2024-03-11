@@ -1,0 +1,39 @@
+<div class="flex flex-col">
+    <div 
+    *ngFor="let exh of exhibitions | slice:0:20" 
+    class="flex group my-4 mx-auto flex-col lg:flex-row w-[350px] md:w-[600px] lg:w-[900px] z-20">
+        <div 
+        class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-black w-[350px] md:w-[600px] lg:w-[700px]">
+            <a href="/exhibitions/{{exh.id}}"> 
+                <img src="{{exh.image}}"/>
+            </a>
+        </div>
+        <div 
+        class="border-l-4 border-b-4 border-black p-4 text-center bg-white w-[350px] md:w-[600px] lg:w-[300px] h-fit">
+            <div class="pb-3 border-b-2 border-black">
+                <a href="/exhibitions/{{exh.id}}">
+                    <div class="font-semibold hover:bg-[aquamarine] p-1">{{exh.title}}</div>
+                </a>
+            </div>
+            <div class="p-2 py-3 text-xs text-left border-b-2 border-black">
+                <div class="flex justify-between border-black/20">
+                    <span class="font-bold">{{exh.start}}</span> - <span class="font-bold">{{exh.end}}</span>
+                </div>
+                <div *ngIf="exh.description" class="flex justify-between border-t-2 border-b-2 border-black/20 my-1 py-1">
+                    {{exh.description}}
+                </div>
+            </div>
+            <div>
+                <button mat-button
+                (click)="productToCart(exh)"
+                class="w-full hover:bg-[aquamarine] text-black border-b-4 border-white hover:border-black px-5 py-1 mt-4 uppercase font-semibold">
+                Get Tickets - {{exh.ticket_price.toLocaleString()}}EUR</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+*ngIf="!exhibitions"
+class="flex justify-center w-[1000px]">
+    <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+</div>
