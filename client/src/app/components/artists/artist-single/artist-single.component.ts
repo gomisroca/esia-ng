@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,8 +13,8 @@ import { Artist, Artwork } from 'src/models';
 
 export class ArtistSingleComponent implements OnInit, OnDestroy {
     public routeSub !: Subscription;
-    public art!: Array<Artwork>;
-    public artist!: Artist;
+    public art : Array<Artwork> = [];
+    public artist !: Artist;
 
     constructor( 
         private artService: ArtService,

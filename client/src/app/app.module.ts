@@ -31,38 +31,38 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgxImageZoomModule,
-    NgxSkeletonLoaderModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatCardModule,
-    MatDividerModule,
-    MatSnackBarModule
-  ],  
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    GalleryComponent,
-    MenuComponent,
-    ArtistsComponent,
-    CollectionComponent,
-    ExhibitionsComponent,
-    CollectionSingleComponent,
-    ExhibitionSingleComponent,
-    ArtistSingleComponent,
-    CartComponent,
-    CheckoutComponent
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NgxImageZoomModule,
+        NgxSkeletonLoaderModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatCardModule,
+        MatDividerModule,
+        MatSnackBarModule
+    ],  
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NavbarComponent,
+        GalleryComponent,
+        MenuComponent,
+        ArtistsComponent,
+        CollectionComponent,
+        ExhibitionsComponent,
+        CollectionSingleComponent,
+        ExhibitionSingleComponent,
+        ArtistSingleComponent,
+        CartComponent,
+        CheckoutComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

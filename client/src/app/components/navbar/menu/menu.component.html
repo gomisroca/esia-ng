@@ -15,7 +15,10 @@
                 <div
                 *ngIf="!exhibitions"
                 class="flex justify-center w-[1000px]">
-                    <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+                    <ngx-skeleton-loader
+                    count="5" 
+                    appearance="circle">
+                    </ngx-skeleton-loader>
                 </div>
                 <div *ngFor="let exh of exhibitions | slice:0:3">
                     <button mat-menu-item class="h-[120px]">
@@ -52,13 +55,16 @@
                 </button>
             </ng-template>
         </mat-menu>
-
         <button mat-button>
-            <a routerLink="/collection">Collection</a>
+            <a routerLink="/collection">
+                Collection
+            </a>
         </button>
 
         <button mat-button>
-            <a routerLink="/artists">Artists</a>
+            <a routerLink="/artists">
+                Artists
+            </a>
         </button>
     </div>
     <app-cart></app-cart>

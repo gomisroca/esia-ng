@@ -19,20 +19,18 @@ app.use(cors(corsOptions))
 mongoose.set('strictQuery', false);
 mongoose.connect(DATABASE_URL)
 const db = mongoose.connection
-db.on('error', (error) => console.log('db error'))
-db.once('open', (success) => console.log('db loaded'))
+db.on('error', (error) => console.log('ESIA DB Error: ' + err))
+db.once('open', (success) => console.log('ESIA DB ON'))
 
 app.use(express.json())
 
 // Routers
-const membersRouter = require('./routes/members');
-app.use('/members', membersRouter);
-const deleteRouter = require('./routes/delete');
-app.use('/delete', deleteRouter);
-const fetchRouter = require('./routes/fetch');
-app.use('/fetch', fetchRouter);
+const fetchAPIRouter = require('./routes/fetchAPI');
+app.use('/fetchAPI', fetchAPIRouter);
+const fetchDBRouter = require('./routes/fetchDB');
+app.use('/fetchDB', fetchDBRouter);
 
-app.listen(3030, () => console.log('Gallery Server Running'));
+app.listen(3030, () => console.log('ESIA SERVER ON'));
 
 module.exports = { 
   db: mongoose.connection 

@@ -10,35 +10,41 @@
             <div
             *ngIf="!cart"
             class="flex justify-center w-[1000px]">
-                <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                count="5"
+                appearance="circle">
+                </ngx-skeleton-loader>
             </div>
             <div *ngFor="let item of cart">
                 <div mat-menu-item class="h-[120px]">
-                        <mat-card class="h-[120px]">
-                            <img  
-                            class="h-[120px] w-[35%] absolute" 
-                            src="{{item.thumbnail || item.image}}">
-                            <mat-card-header class=" flex flex-col justify-end z-10 text-right">
-                                <mat-card-subtitle>
-                                    {{item.artist ? item.artist : 'Exhibition Ticket'}}
-                                </mat-card-subtitle>
-                                <mat-card-title style="background-color: #ffffff6c; font-size: 18px;">
-                                    {{item.title}}
+                    <mat-card class="h-[120px]">
+                        <img  
+                        class="h-[120px] w-[35%] absolute" 
+                        src="{{item.thumbnail || item.image}}">
+                        <mat-card-header class=" flex flex-col justify-end z-10 text-right">
+                            <mat-card-subtitle>
+                                {{item.artist ? 
+                                    item.artist : 
+                                    'Exhibition Ticket'
+                                }}
+                            </mat-card-subtitle>
+                            <mat-card-title style="background-color: #ffffff6c; font-size: 18px;">
+                                {{item.title}}
+                            </mat-card-title>
+                            <div class="flex flex-row justify-end z-10 text-right">
+                                <mat-card-title style="font-size: 18px;">
+                                    {{item.price  || item.ticket_price}}EUR
                                 </mat-card-title>
-                                <div class="flex flex-row justify-end z-10 text-right">
-                                    <mat-card-title style="font-size: 18px;">
-                                        {{item.price  || item.ticket_price}}EUR
-                                    </mat-card-title>
-                                    <mat-card-subtitle>
-                                        <button 
-                                        (click)="removeFromCart(item)"
-                                        mat-icon-button>
-                                            <mat-icon>delete</mat-icon>
-                                        </button>
-                                    </mat-card-subtitle>
-                                </div>
-                            </mat-card-header>
-                        </mat-card>
+                                <mat-card-subtitle>
+                                    <button 
+                                    (click)="removeFromCart($event, item)"
+                                    mat-icon-button>
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-card-subtitle>
+                            </div>
+                        </mat-card-header>
+                    </mat-card>
                 </div>
             </div>
             <button mat-menu-item class="checkout h-[60px]">

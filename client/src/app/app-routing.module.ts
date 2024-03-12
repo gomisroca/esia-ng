@@ -10,42 +10,42 @@ import { ArtistSingleComponent } from './components/artists/artist-single/artist
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'collection',
-    component: CollectionComponent,
-  },
-  {
-    path: 'collection/:id',
-    component: CollectionSingleComponent
-  },
-  {
-    path: 'artists',
-    component: ArtistsComponent,
-  },
-  {
-    path: 'artists/:id',
-    component: ArtistSingleComponent,
-  },
-  {
-    path: 'exhibitions',
-    component: ExhibitionsComponent,
-  },
-  {
-    path: 'exhibitions/:id',
-    component: ExhibitionSingleComponent,
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent,
-  },
+    {
+        path: '',
+        component: HomeComponent,
+    },
+    {
+        path: 'collection',
+        component: CollectionComponent,
+    },
+    {
+        path: 'collection/:id',
+        component: CollectionSingleComponent
+    },
+    {
+        path: 'artists',
+        component: ArtistsComponent,
+    },
+    {
+        path: 'artists/:id',
+        component: ArtistSingleComponent,
+    },
+    {
+        path: 'exhibitions',
+        component: ExhibitionsComponent,
+    },
+    {
+        path: 'exhibitions/:id',
+        component: ExhibitionSingleComponent,
+    },
+    {
+        path: 'checkout',
+        component: CheckoutComponent,
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

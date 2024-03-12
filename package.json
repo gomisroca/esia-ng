@@ -1,5 +1,16 @@
-{
+{  
+  "name": "esia-gallery",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.2.2",
     "mongoose": "^7.1.1"
   }
 }

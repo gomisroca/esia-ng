@@ -1,18 +1,22 @@
 <div class="flex flex-col">
-    <div *ngFor="let item of cart" 
+    <div 
+    *ngFor="let item of cart" 
     class="flex group my-4 mx-auto flex-col lg:flex-row w-[350px] md:w-[500px] lg:w-[600px] z-20">
         <img  
         class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-black w-[350px] md:w-[500px] lg:w-[300px]" 
         src="{{item.thumbnail || item.image}}">
         <div class="border-l-4 border-b-4 border-black p-4 text-center bg-white w-[350px] md:w-[500px] lg:w-[300px] h-fit">
             <div class="pb-3 border-b-2 border-black">
-                {{item.artist ? item.artist : 'Exhibition Ticket'}}
+                {{item.artist ? 
+                    item.artist : 
+                    'Exhibition Ticket'
+                }}
             </div>
             <div class="p-2 py-3 text-lg font-bold text-center border-b-2 border-black">
                 {{item.title}}
             </div >
             <div class="p-2 text-lg text-center">
-                {{item.price  || item.ticket_price}}EUR
+                {{ item.price  || item.ticket_price }}EUR
             </div>
             <button 
             (click)="removeFromCart(item)"
@@ -21,7 +25,9 @@
             </button>
         </div>
     </div>
-    <button mat-flat-button style="font-size: 21px; position: fixed; bottom: 0px; border-radius: 0px; border-top: 4px solid black;" class=" w-[350px] md:w-[500px] lg:w-[600px] z-20">
+    <button 
+    mat-flat-button
+    style="font-size: 21px; position: fixed; bottom: 0px; border-radius: 0px; border-top: 4px solid black;" class=" w-[350px] md:w-[500px] lg:w-[600px] z-20">
         <a>
             Proceed to Payment
         </a>

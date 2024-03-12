@@ -4,11 +4,23 @@
         <button class="hover:bg-[aquamarine] bg-white border-l-4 border-b-4 border-black p-4 text-center overflow-hidden flex flex-col group my-4 mx-auto w-[350px] md:w-[600px] lg:w-[450px] z-20">
             <a href="/artists/{{art.id}}">
                 <div class="pb-3 border-b-2 border-black">
-                    <div class="font-semibold p-1">{{art.title}}</div>
+                    <div class="font-semibold p-1">
+                        {{art.title}}
+                    </div>
                 </div>
-                <div *ngIf="art.birth || art.description" class="p-2 py-3 text-xs text-left border-b-2 border-black">
-                    <div *ngIf="art.birth" class="flex justify-evenly">
-                        <span class="font-bold">{{art.birth}}</span>-<span class="font-bold">{{art.death}}</span>
+                <div 
+                *ngIf="art.birth || art.description" 
+                class="p-2 py-3 text-xs text-left border-b-2 border-black">
+                    <div 
+                    *ngIf="art.birth" 
+                    class="flex justify-evenly">
+                        <span class="font-bold">
+                            {{art.birth}}
+                        </span>
+                        <span>-</span>
+                        <span class="font-bold">
+                            {{art.death}}
+                        </span>
                     </div>
                     <div 
                     *ngIf="art.description"
@@ -23,5 +35,8 @@
 <div
 *ngIf="!artists"
 class="flex justify-center w-[1000px]">
-    <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+    <ngx-skeleton-loader 
+    count="5" 
+    appearance="circle">
+    </ngx-skeleton-loader>
 </div>
