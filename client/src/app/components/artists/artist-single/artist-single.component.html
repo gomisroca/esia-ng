@@ -21,7 +21,7 @@ class="p-4 text-center overflow-hidden flex flex-col group mt-4 mb-8 mx-auto w-s
                     {{artist.death}}
                 </span>
             </div>
-            <div 
+            <div
             *ngIf="artist.description"
             [innerHTML]="artist.description" 
             class="text-justify justify-between border-t-2 border-b-2 border-teal-950/20 my-1 p-2">
@@ -64,36 +64,38 @@ class="text-center mt-4 lg:mt-8">
                     </div>
                 </div>
             </div>
-            <div class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
-                <div class="flex justify-between border-b-2 border-teal-950/20">
+            <div class="flex flex-col gap-1 mx-2 py-3 text-xs text-left border-b-2 border-teal-950">
+                <div class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">
                         Date
                     </span>
-                    <span class="font-bold">
+                    <span class="font-bold text-end">
                         {{art.date}}
                     </span>
                 </div>
-                <div class="flex justify-between border-b-2 border-teal-950/20">
+                <div class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">
                         Origin
                     </span>
-                    <span class="font-bold">
+                    <span class="font-bold text-end">
                         {{art.origin}}
                     </span>
                 </div>
-                <div class="flex justify-between border-b-2 border-teal-950/20">
-                    <span class="mr-2">
+                <div class="flex justify-between border-b-2 py-1 border-teal-950/20">
+                    <span class="mr-2 text-end">
                         Style
                     </span>
-                    <span class="font-bold">
+                    <a 
+                    class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" 
+                    href="/collection/{{art.style_id}}">
                         {{art.style}}
-                    </span>
+                    </a>
                 </div>
                 <div class="flex justify-between">
                     <span class="mr-2">
                         Medium
                     </span>
-                    <span class="font-bold">
+                    <span class="font-bold text-end">
                         {{art.medium}}
                     </span>
                 </div>

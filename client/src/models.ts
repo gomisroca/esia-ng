@@ -7,6 +7,7 @@ export interface Artwork {
     date: string;
     origin: string;
     style: string;
+    style_id: string;
     thumbnail: string;
     fullImage: string;
     price: number;

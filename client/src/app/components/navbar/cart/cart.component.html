@@ -23,12 +23,14 @@
                         src="{{item.thumbnail || item.image}}">
                         <mat-card-header class=" flex flex-col justify-end z-10 text-right">
                             <mat-card-subtitle>
-                                {{item.artist ? 
-                                    item.artist : 
-                                    'Exhibition Ticket'
-                                }}
+                                <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
+                                    <div class="pr-2 py-1 hover:bg-teal-300 transition duration-200">
+                                        {{item.artist}}
+                                    </div>
+                                </a>
+                                <span *ngIf="!item.artist">Exhibition Ticket</span>
                             </mat-card-subtitle>
-                            <mat-card-title style="background-color: #ffffff6c; font-size: 18px;">
+                            <mat-card-title style="background-color: #ffffff6c; font-size: 18px; padding-right: 0.5rem;">
                                 {{item.title}}
                             </mat-card-title>
                             <div class="flex flex-row justify-end z-10 text-right">

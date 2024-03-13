@@ -5,10 +5,10 @@
         <div 
         class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto lg:w-[700px]">
             <lib-ngx-image-zoom
-                [thumbImage]=art.thumbnail
-                [enableScrollZoom]="true"
-                [enableLens]="true"
-                [maxZoomRatio]="4"
+            [thumbImage]=art.thumbnail
+            [enableScrollZoom]="true"
+            [enableLens]="true"
+            [maxZoomRatio]="4"
             ></lib-ngx-image-zoom>
         </div>
         <div 
@@ -16,33 +16,42 @@
             <div class="pb-3 mx-2 border-b-2 border-teal-950">
                 <div class="font-semibold">{{art.title}}</div>
                 <div class="font-semibold text-lg">
-                    <div>{{art.artist}}</div>
+                    <a *ngIf="art.artist != null" href="/artists/{{art.artist_id}}">
+                        <div class="py-1 hover:bg-teal-300 transition duration-200">
+                            {{art.artist}}
+                        </div>
+                    </a>
                     <div *ngIf="art.artist == null">Artist Unknown</div>
                 </div>
             </div>
-            <div class="mx-2 py-3 text-xs text-left border-b-2 border-teal-950">
-                <div class="flex justify-between border-b-2 border-teal-950/20">
+            <div class="flex flex-col gap-1 mx-2 py-3 text-xs text-left border-b-2 border-teal-950">
+                <div class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">Date</span>
-                    <span class="font-bold">{{art.date}}</span>
+                    <span class="font-bold text-end">{{art.date}}</span>
                 </div>
-                <div class="flex justify-between border-b-2 border-teal-950/20">
+                <div class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">Origin</span>
-                    <span class="font-bold">{{art.origin}}</span>
+                    <span class="font-bold text-end">{{art.origin}}</span>
                 </div>
-                <div class="flex justify-between border-b-2 border-teal-950/20">
+                <div 
+                *ngIf="art.style && art.style_id" 
+                class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">Style</span>
-                    <span class="font-bold">{{art.style}}</span>
+                    <a class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" href="/collection/{{art.style_id}}">
+                        {{art.style}}
+                    </a>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between py-1">
                     <span class="mr-2">Medium</span>
-                    <span class="font-bold">{{art.medium}}</span>
+                    <span class="font-bold text-end">{{art.medium}}</span>
                 </div>
             </div>
             <div>
                 <button
                 (click)="productToCart(art)"
                 class="w-full lg:w-[250px] hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 px-5 py-2 mt-4 uppercase font-semibold">
-                Buy a Copy - {{art.price.toLocaleString()}}EUR</button>
+                    Buy a Copy - {{art.price.toLocaleString()}}EUR
+                </button>
             </div>
         </div>
     </div>

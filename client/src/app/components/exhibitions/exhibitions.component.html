@@ -19,7 +19,9 @@
                 <div class="flex justify-between border-teal-950/20">
                     <span class="font-bold">{{exh.start}}</span> - <span class="font-bold">{{exh.end}}</span>
                 </div>
-                <div *ngIf="exh.description" class="flex justify-between border-t-2 border-b-2 border-teal-950/20 my-1 py-1">
+                <div 
+                *ngIf="exh.description" 
+                class="flex justify-between border-t-2 border-b-2 border-teal-950/20 my-1 py-1 text-justify">
                     {{exh.description}}
                 </div>
             </div>

@@ -7,10 +7,12 @@
         src="{{item.thumbnail || item.image}}">
         <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-[350px] md:w-[500px] lg:w-[300px] h-fit">
             <div class="pb-3 border-b-2 border-teal-950">
-                {{item.artist ? 
-                    item.artist : 
-                    'Exhibition Ticket'
-                }}
+                <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
+                    <div class="py-1 hover:bg-teal-300 transition duration-200">
+                        {{item.artist}}
+                    </div>
+                </a>
+                <span *ngIf="!item.artist">Exhibition Ticket</span>
             </div>
             <div class="p-2 py-3 text-lg font-bold text-center border-b-2 border-teal-950">
                 {{item.title}}

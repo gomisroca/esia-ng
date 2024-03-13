@@ -34,6 +34,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     .subscribe({
         next: (itemList: Array<Artwork>) => {
             this.art = itemList;
+            console.log(itemList)
             this.shuffleArray(this.art);
         },
         error: e => this.error = e

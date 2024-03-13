@@ -2,16 +2,19 @@
     <div 
     *ngFor="let style of styles">
         <a href="/collection/{{style.id}}">
-            <div *ngIf="style.banner"
+            <div 
+            *ngIf="style.banner"
             class="bg-teal-50 hover:bg-teal-300 transition duration-200 border-l-4 border-teal-950 overflow-hidden flex flex-col group my-4 mx-auto w-[350px] md:w-[300px] z-20">
                 <div 
                 class="flex self-center border-l-4 border-teal-950 h-[550px] w-[1000px]">
-                    <img class="m-auto h-[550px]" src="{{style.banner}}"/>
+                    <img class="hover:contrast-125 transition duration-200 m-auto h-[550px]" src="{{style.banner}}"/>
                 </div>
                 <div 
                 class="border-b-4 border-teal-950 p-4 text-center w-[350px] md:w-[300px] h-fit">
                     <div class="pb-3 border-b-2 border-teal-950">
-                        <div class="font-semibold p-1">{{style.title}}</div>
+                        <div class="font-semibold p-1">
+                            {{style.title.toUpperCase()}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -19,9 +22,12 @@
     </div>
 </div>
 <div
-*ngIf="!styles !error"
+*ngIf="!styles && !error"
 class="flex justify-center w-[1000px]">
-    <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+    <ngx-skeleton-loader 
+    count="5" 
+    appearance="circle">
+    </ngx-skeleton-loader>
 </div>
 <div
 *ngIf="error"
