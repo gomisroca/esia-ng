@@ -8,21 +8,47 @@ router.get('/fetch', async(req, res) => {
     try {
         let results = [];
 
-        await axios.get('https://api.artic.edu/api/v1/exhibitions/search?query[term][status]=Confirmed&fields=id,title,image_url,aic_start_at,aic_end_at,short_description,web_url,gallery_title&limit=100').then(async(res) =>{
+        await axios.get('https://api.artic.edu/api/v1/exhibitions/search?query[term][status]=Confirmed&fields=id,title,image_url,aic_start_at,aic_end_at,short_description,web_url,gallery_title&limit=100')
+        .then(async(res) =>{
             for(let j = 0; j < (res.data.data).length; j++){
                 results.push(res.data.data[j]);
             }
 
             let total = res.data.pagination.total_pages;
 
-            for(let i = 1; i < 5; i++){
-                await axios.get(`https://api.artic.edu/api/v1/exhibitions/search?query[term][status]=Confirmed&fields=id,title,image_url,aic_start_at,aic_end_at,short_description,web_url,gallery_title&limit=100&page=${i}`).then((result) => {
-                    for(let j = 0; j < (res.data.data).length; j++){
-                        results.push(res.data.data[j]);
+            for(let i = 1; i < total; i++){
+                await axios.get(`https://api.artic.edu/api/v1/exhibitions/search?query[term][status]=Confirmed&fields=id,title,image_url,aic_start_at,aic_end_at,short_description,web_url,gallery_title&limit=100&page=${i}`)
+                .then((result) => {
+                    for(let j = 0; j < (result.data.data).length; j++){
+                        results.push(result.data.data[j]);
                     }
-                });
+                })
+                .catch(error => {
+                    if (error.response) {
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    } else if (error.request) {
+                        console.log(error.request);
+                    } else {
+                        console.log('Error', error.message);
+                    }
+                    console.log(error.config);
+                })
             }
-        });
+        })
+        .catch(error => {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        })
 
         console.log(results.length);
 

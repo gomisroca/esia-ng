@@ -9,7 +9,8 @@ const artworkModel = require('../models/artwork');
 router.get('/fetch', async(req, res) => {
     try{
         let results = [];
-        await axios.get('https://api.artic.edu/api/v1/artworks/search?q=TM-&fields=id,title,artist_id,artist_title,medium_display,date_display,place_of_origin,style_title,image_id,style_id&limit=100').then(async(res) =>{
+        await axios.get('https://api.artic.edu/api/v1/artworks/search?q=TM-&fields=id,title,artist_id,artist_title,medium_display,date_display,place_of_origin,style_title,image_id,style_id&limit=100')
+        .then(async(res) =>{
             for(let j = 0; j < (res.data.data).length; j++){
                 results.push(res.data.data[j]);
             }
@@ -17,13 +18,38 @@ router.get('/fetch', async(req, res) => {
             let total = res.data.pagination.total_pages;
             console.log(total)
             for(let i = 2; i <= total; i++){
-                await axios.get(`https://api.artic.edu/api/v1/artworks/search?query[term][is_public_domain]=true&fields=id,title,artist_id,artist_title,medium_display,date_display,place_of_origin,style_title,image_id,style_id&limit=100&page=${i}`).then((result) => {
-                    for(let j = 0; j < (res.data.data).length; j++){
-                        results.push(res.data.data[j]);
+                await axios.get(`https://api.artic.edu/api/v1/artworks/search?query[term][is_public_domain]=true&fields=id,title,artist_id,artist_title,medium_display,date_display,place_of_origin,style_title,image_id,style_id&limit=100&page=${i}`)
+                .then((result) => {
+                    for(let j = 0; j < (result.data.data).length; j++){
+                        results.push(result.data.data[j]);
                     }
-                });
+                })
+                .catch(error => {
+                    if (error.response) {
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    } else if (error.request) {
+                        console.log(error.request);
+                    } else {
+                        console.log('Error', error.message);
+                    }
+                    console.log(error.config);
+            })
             }
-        });
+        })
+        .catch(error => {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        })
 
         console.log(results.length)
 

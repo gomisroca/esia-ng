@@ -14,11 +14,24 @@ router.get('/fetch', async(req, res) => {
 
         let results = [];
         for(let i = 0; i < artworks.length; i++){
-            await axios.get(`https://api.artic.edu/api/v1/category-terms/search?query[term][id]=${artworks[i].style_id}`).then(async(res) =>{
+            await axios.get(`https://api.artic.edu/api/v1/category-terms/search?query[term][id]=${artworks[i].style_id}`)
+            .then(async(res) =>{
                 for(let j = 0; j < (res.data.data).length; j++){
                     results.push(res.data.data[j]);
                 }
-            });
+            })
+            .catch(error => {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log(error.request);
+                } else {
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
         }
         results = results.filter((art, index, array) => array.findIndex(t => t.id == art.id) == index);
 
