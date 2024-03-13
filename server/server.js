@@ -25,10 +25,14 @@ db.once('open', (success) => console.log('ESIA DB ON'))
 app.use(express.json())
 
 // Routers
-const fetchAPIRouter = require('./routes/fetchAPI');
-app.use('/fetchAPI', fetchAPIRouter);
-const fetchDBRouter = require('./routes/fetchDB');
-app.use('/fetchDB', fetchDBRouter);
+const artistsRouter = require('./routes/artists');
+app.use('/artists', artistsRouter);
+const artstylesRouter = require('./routes/artstyles');
+app.use('/artstyles', artstylesRouter);
+const artworksRouter = require('./routes/artworks');
+app.use('/artworks', artworksRouter);
+const exhibitionsRouter = require('./routes/exhibitions');
+app.use('/exhibitions', exhibitionsRouter);
 
 app.listen(3030, () => console.log('ESIA SERVER ON'));
 
