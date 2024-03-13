@@ -1,4 +1,4 @@
-<div *ngIf="art" class=" bg-white px-4 mt-4 py-1 w-fit mx-auto text-xl uppercase font-bold border-l-4 border-b-4 border-black">
+<div *ngIf="art" class=" bg-teal-50 px-4 mt-4 py-1 w-fit mx-auto text-xl uppercase font-bold border-l-4 border-b-4 border-teal-950">
     <p>{{art[0].style}}</p>
 </div>
 <div class="flex flex-col">
@@ -6,7 +6,7 @@
     *ngFor="let art of art"
     class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[1000px] z-20">
         <div 
-        class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-black w-auto lg:w-[700px]">
+        class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto lg:w-[700px]">
             <lib-ngx-image-zoom
             [thumbImage]=art.thumbnail
             [enableScrollZoom]="true"
@@ -15,24 +15,24 @@
             ></lib-ngx-image-zoom>
         </div>
         <div 
-        class="border-l-4 border-b-4 border-black p-4 text-center bg-white px-4 w-auto lg:px-0 lg:w-[300px] h-fit">
-            <div class="pb-3 border-b-2 border-black">
+        class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 px-4 w-auto lg:px-0 lg:w-[300px] h-fit">
+            <div class="pb-3 border-b-2 border-teal-950">
                 <div class="font-semibold">{{art.title}}</div>
                 <div class="font-semibold text-lg">
                     <div>{{art.artist}}</div>
                     <div *ngIf="art.artist == null">Artist Unknown</div>
                 </div>
             </div>
-            <div class="p-2 py-3 text-xs text-left border-b-2 border-black">
-                <div class="flex justify-between border-b-2 border-black/20">
+            <div class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
+                <div class="flex justify-between border-b-2 border-teal-950/20">
                     <span class="mr-2">Date</span>
                     <span class="font-bold">{{art.date}}</span>
                 </div>
-                <div class="flex justify-between border-b-2 border-black/20">
+                <div class="flex justify-between border-b-2 border-teal-950/20">
                     <span class="mr-2">Origin</span>
                     <span class="font-bold">{{art.origin}}</span>
                 </div>
-                <div class="flex justify-between border-b-2 border-black/20">
+                <div class="flex justify-between border-b-2 border-teal-950/20">
                     <span class="mr-2">Style</span>
                     <span class="font-bold">{{art.style}}</span>
                 </div>
@@ -42,9 +42,9 @@
                 </div>
             </div>
             <div>
-                <button mat-button
+                <button
                 (click)="productToCart(art)"
-                class="w-full lg:w-[250px] hover:bg-[aquamarine] text-black border-b-4 border-white hover:border-black px-5 py-1 mt-4 uppercase font-semibold">
+                class="w-full lg:w-[250px] hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 px-5 py-2 mt-4 uppercase font-semibold">
                 Buy a Copy - {{art.price.toLocaleString()}}EUR</button>
             </div>
         </div>

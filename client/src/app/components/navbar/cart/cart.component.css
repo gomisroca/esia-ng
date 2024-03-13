@@ -9,15 +9,15 @@
     cursor: auto;
 }
 .checkout:hover{
-    background-color: aquamarine !important;
+    background-color: rgb(94 234 212) !important;
     cursor: pointer !important;
 }
 .checkout .mat-mdc-card:hover{
     cursor: pointer !important;
 }
 .mat-mdc-menu-panel{
-    border-right: 4px solid black;
-    border-bottom: 2px solid black;
+    border-right: 4px solid rgb(4 47 46);
+    border-bottom: 2px solid rgb(4 47 46);
     width: 300px !important;
     box-shadow: none !important;
     border-radius: 0px !important;

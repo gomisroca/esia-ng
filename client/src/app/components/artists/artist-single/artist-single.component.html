@@ -1,15 +1,15 @@
 <div 
 *ngIf="artist"
 class="p-4 text-center overflow-hidden flex flex-col group mt-4 mb-8 mx-auto w-screen lg:px-0 lg:w-[1000px]">
-    <div class="bg-white border-l-4 border-b-4 border-black">
-        <div class="pb-3 mx-4 border-b-2 border-black">
+    <div class="bg-teal-50 border-l-4 border-b-4 border-teal-950">
+        <div class="pb-3 mx-4 border-b-2 border-teal-950">
             <div class="text-xl uppercase font-bold p-1">
                 {{artist.title}}
             </div>
         </div>
         <div
         *ngIf="artist.birth || artist.description"
-        class="p-2 py-3 text-xs text-left border-b-2 border-black">
+        class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
             <div 
             *ngIf="artist.birth"
             class="flex justify-evenly">
@@ -24,7 +24,7 @@ class="p-4 text-center overflow-hidden flex flex-col group mt-4 mb-8 mx-auto w-s
             <div 
             *ngIf="artist.description"
             [innerHTML]="artist.description" 
-            class="text-justify justify-between border-t-2 border-b-2 border-black/20 my-1 p-2">
+            class="text-justify justify-between border-t-2 border-b-2 border-teal-950/20 my-1 p-2">
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@ class="text-center mt-4 lg:mt-8">
     <div 
     *ngFor="let art of art"
     class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[1000px] z-20">
-        <div class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-black w-auto lg:w-[700px]">
+        <div class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto lg:w-[700px]">
             <lib-ngx-image-zoom
             [thumbImage]=art.thumbnail
             [enableScrollZoom]="true"
@@ -49,8 +49,8 @@ class="text-center mt-4 lg:mt-8">
             [maxZoomRatio]="4"
             ></lib-ngx-image-zoom>
         </div>
-        <div class="border-l-4 border-b-4 border-black p-4 text-center bg-white w-auto lg:px-0 lg:w-[300px] h-fit">
-            <div class="pb-3 border-b-2 border-black">
+        <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-auto lg:px-0 lg:w-[300px] h-fit">
+            <div class="pb-3 border-b-2 border-teal-950">
                 <div class="font-semibold">
                     {{art.title}}
                 </div>
@@ -64,8 +64,8 @@ class="text-center mt-4 lg:mt-8">
                     </div>
                 </div>
             </div>
-            <div class="p-2 py-3 text-xs text-left border-b-2 border-black">
-                <div class="flex justify-between border-b-2 border-black/20">
+            <div class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
+                <div class="flex justify-between border-b-2 border-teal-950/20">
                     <span class="mr-2">
                         Date
                     </span>
@@ -73,7 +73,7 @@ class="text-center mt-4 lg:mt-8">
                         {{art.date}}
                     </span>
                 </div>
-                <div class="flex justify-between border-b-2 border-black/20">
+                <div class="flex justify-between border-b-2 border-teal-950/20">
                     <span class="mr-2">
                         Origin
                     </span>
@@ -81,7 +81,7 @@ class="text-center mt-4 lg:mt-8">
                         {{art.origin}}
                     </span>
                 </div>
-                <div class="flex justify-between border-b-2 border-black/20">
+                <div class="flex justify-between border-b-2 border-teal-950/20">
                     <span class="mr-2">
                         Style
                     </span>
@@ -102,7 +102,7 @@ class="text-center mt-4 lg:mt-8">
                 <button 
                 mat-button
                 (click)="productToCart(art)"
-                class="w-full lg:w-[250px] hover:bg-[aquamarine] text-black border-b-4 border-white hover:border-black px-5 py-1 mt-4 uppercase font-semibold">
+                class="w-full lg:w-[250px] hover:bg-teal-300 transition duration-200 text-teal-950 border-b-4 border-teal-50 hover:border-teal-950 px-5 py-1 mt-4 uppercase font-semibold">
                     Buy a Copy - {{art.price.toLocaleString()}}EUR
                 </button>
             </div>

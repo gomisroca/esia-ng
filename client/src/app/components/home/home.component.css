@@ -3,5 +3,5 @@
     height:auto !important;
 }
 ::ng-deep .ngxImageZoomLensEnabled {
-    border: 4px solid black !important;
+    border: 4px solid rgb(4 47 46) !important;
 }

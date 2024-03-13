@@ -1,16 +1,16 @@
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <div 
     *ngFor="let art of artists">
-        <button class="hover:bg-[aquamarine] bg-white border-l-4 border-b-4 border-black p-4 text-center overflow-hidden flex flex-col group my-4 mx-auto w-[350px] md:w-[600px] lg:w-[450px] z-20">
+        <button class="hover:bg-teal-300 transition duration-200 bg-teal-50 border-l-4 border-b-4 border-teal-950 p-4 text-center overflow-hidden flex flex-col group my-4 mx-auto w-[350px] md:w-[600px] lg:w-[450px] z-20">
             <a href="/artists/{{art.id}}">
-                <div class="pb-3 border-b-2 border-black">
+                <div class="pb-3 border-b-2 border-teal-950">
                     <div class="font-semibold p-1">
                         {{art.title}}
                     </div>
                 </div>
                 <div 
                 *ngIf="art.birth || art.description" 
-                class="p-2 py-3 text-xs text-left border-b-2 border-black">
+                class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
                     <div 
                     *ngIf="art.birth" 
                     class="flex justify-evenly">
@@ -25,7 +25,7 @@
                     <div 
                     *ngIf="art.description"
                     [innerHTML]="art.description" 
-                    class="text-justify justify-between border-t-2 border-b-2 border-black/20 my-1 p-2">
+                    class="text-justify justify-between border-t-2 border-b-2 border-teal-950/20 my-1 p-2 h-[500px] overflow-y-scroll">
                     </div>
                 </div>
             </a>

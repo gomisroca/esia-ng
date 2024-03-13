@@ -23,7 +23,7 @@
     background-color: unset;
 }
 .mat-mdc-button:hover, .mat-mdc-card:hover{
-    background-color: aquamarine !important;
+    background-color: rgb(94 234 212) !important;
 }
 ::ng-deep .mdc-notched-outline__leading{
     border-radius: 0px !important;
@@ -43,7 +43,7 @@
 }
 
 ::ng-deep .mdc-line-ripple::after {
-    border-color: aquamarine !important;
+    border-color: rgb(94 234 212) !important;
 }
 
 .mat-mdc-menu-item{
@@ -53,11 +53,11 @@
     padding: 0px !important;
 }
 .mat-mdc-menu-item:hover{
-    background-color: aquamarine !important;
+    background-color: rgb(94 234 212) !important;
 }
 ::ng-deep .mdc-list-item__primary-text{
     font-family: 'Roboto', sans-serif !important;
     font-weight: 500 !important;
     font-size: 14px !important;
-    border-bottom: 4px solid black;
+    border-bottom: 4px solid rgb(4 47 46);
 }
