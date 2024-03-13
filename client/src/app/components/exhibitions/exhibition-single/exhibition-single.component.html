@@ -29,7 +29,12 @@ class="flex flex-col group my-4 mx-auto px-4 w-screen lg:px-0 lg:w-[1000px] z-20
         </div>
 </div>
 <div
-*ngIf="!exh"
+*ngIf="!exh && !error"
 class="flex justify-center w-[1000px]">
     <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+</div>
+<div
+*ngIf="error"
+class="flex justify-center w-[1000px] mt-10">
+    {{error.message}}
 </div>

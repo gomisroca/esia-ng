@@ -51,7 +51,12 @@
     </div>
 </div>
 <div
-*ngIf="!art"
+*ngIf="!art && !error"
 class="flex justify-center w-[1000px]">
     <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+</div>
+<div
+*ngIf="error"
+class="flex justify-center w-[1000px] mt-10">
+    {{error.message}}
 </div>

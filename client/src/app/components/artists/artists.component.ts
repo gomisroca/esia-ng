@@ -9,8 +9,9 @@ import { Artist } from 'src/models';
     styleUrls: ['./artists.component.css']
 })
 export class ArtistsComponent  implements OnInit, OnDestroy {
-    private artSub!: Subscription;
-    public artists!: Array<Artist>;
+    private artSub !: Subscription;
+    public artists !: Array<Artist>;
+    public error !: Error;
 
     constructor(
         public artService: ArtService,
@@ -19,8 +20,11 @@ export class ArtistsComponent  implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.artSub = this.artService
         .getArtists()
-        .subscribe((itemList: Array<Artist>) => {
-            this.artists= itemList;
+        .subscribe({
+            next: (itemList: Array<Artist>) => {
+                this.artists = itemList;
+            },
+            error: e => this.error = e
         })
     }
 

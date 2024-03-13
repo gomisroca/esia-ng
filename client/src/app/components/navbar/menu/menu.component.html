@@ -13,12 +13,17 @@
         <mat-menu #exhibitionsMenu="matMenu">
             <ng-template matMenuContent>
                 <div
-                *ngIf="!exhibitions"
+                *ngIf="!exhibitions && !error"
                 class="flex justify-center w-[1000px]">
                     <ngx-skeleton-loader
                     count="5" 
                     appearance="circle">
                     </ngx-skeleton-loader>
+                </div>
+                <div
+                *ngIf="error"
+                class="flex justify-center w-[1000px]">
+                    {{error.message}}
                 </div>
                 <div *ngFor="let exh of exhibitions | slice:0:3">
                     <button mat-menu-item class="h-[120px]">

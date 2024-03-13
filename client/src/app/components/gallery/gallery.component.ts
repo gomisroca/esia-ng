@@ -10,8 +10,9 @@ import { Artwork } from 'src/models';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit, OnDestroy {
-  private artSub!: Subscription;
-  public art!: Array<Artwork>;
+  private artSub !: Subscription;
+  public art !: Array<Artwork>;
+  public error !: Error;
 
   constructor(
     public artService: ArtService,
@@ -30,9 +31,12 @@ export class GalleryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.artSub = this.artService
     .getArtworks()
-    .subscribe((itemList: Array<Artwork>) => {
-      this.art= itemList;
-      this.shuffleArray(this.art);
+    .subscribe({
+        next: (itemList: Array<Artwork>) => {
+            this.art = itemList;
+            this.shuffleArray(this.art);
+        },
+        error: e => this.error = e
     })
   }
 

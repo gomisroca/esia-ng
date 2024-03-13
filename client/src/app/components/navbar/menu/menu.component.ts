@@ -9,8 +9,9 @@ import { Exhibition } from 'src/models';
     styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit, OnDestroy {
-    private exhSub!: Subscription;
-    public exhibitions!: Array<Exhibition>;
+    private exhSub !: Subscription;
+    public exhibitions !: Array<Exhibition>;
+    public error !: Error;
 
     constructor(
         public artService: ArtService,
@@ -19,8 +20,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.exhSub = this.artService
         .getExhibitions()
-        .subscribe((itemList: Array<Exhibition>) => {
-            this.exhibitions = itemList;
+        .subscribe({
+            next: (itemList: Array<Exhibition>) => {
+                this.exhibitions = itemList;
+            },
+            error: e => this.error = e
         })
     }
 

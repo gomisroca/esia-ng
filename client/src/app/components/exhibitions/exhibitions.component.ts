@@ -10,39 +10,43 @@ import { Exhibition } from 'src/models';
   styleUrls: ['./exhibitions.component.css']
 })
 export class ExhibitionsComponent implements OnInit, OnDestroy {
-  private exhSub!: Subscription;
-  public exhibitions!: Array<Exhibition>;
+    private exhSub !: Subscription;
+    public exhibitions !: Array<Exhibition>;
+    public error !: Error;
 
-  constructor(
-    public artService: ArtService,
-    private _snackBar: MatSnackBar,
-  ) { }
+    constructor(
+        public artService: ArtService,
+        private _snackBar: MatSnackBar,
+    ) { }
 
-  ngOnInit(): void {
-    this.exhSub = this.artService
-    .getExhibitions()
-    .subscribe((itemList: Array<Exhibition>) => {
-      this.exhibitions= itemList;
-    })
-  }
-
-  productToCart(item: Exhibition): void {
-    let cart : any = localStorage.getItem('ESIA_Cart');
-
-    if(cart == null){
-      cart = [];
-    } else{
-      cart = JSON.parse(cart);
+    ngOnInit(): void {
+        this.exhSub = this.artService
+        .getExhibitions()
+        .subscribe({
+            next: (itemList: Array<Exhibition>) => {
+                this.exhibitions= itemList;
+            },
+            error: e => this.error = e
+        })
     }
-    cart.push(item);
-    console.log(cart)
-    localStorage.setItem('ESIA_Cart', JSON.stringify(cart));
-    this._snackBar.open(`Added ${item.title} to your cart`, 'X', {duration: 3000});
-  }
 
-  ngOnDestroy(): void {
-    if (this.exhSub){
-      this.exhSub.unsubscribe();
+    productToCart(item: Exhibition): void {
+        let cart : any = localStorage.getItem('ESIA_Cart');
+
+        if(cart == null){
+            cart = [];
+        } else{
+            cart = JSON.parse(cart);
+        }
+        cart.push(item);
+        console.log(cart)
+        localStorage.setItem('ESIA_Cart', JSON.stringify(cart));
+        this._snackBar.open(`Added ${item.title} to your cart`, 'X', {duration: 3000});
     }
-  }
+
+    ngOnDestroy(): void {
+        if (this.exhSub){
+            this.exhSub.unsubscribe();
+        }
+    }
 }

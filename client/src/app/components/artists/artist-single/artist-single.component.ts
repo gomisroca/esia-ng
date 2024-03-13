@@ -15,6 +15,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     public routeSub !: Subscription;
     public art : Array<Artwork> = [];
     public artist !: Artist;
+    public error !: Error;
 
     constructor( 
         private artService: ArtService,
@@ -26,10 +27,13 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
         this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
             this.artService
             .getArtistsSingle(params['id'])
-            .subscribe((itemList: any) => {
-                this.art = itemList.art;
-                this.artist = itemList.artist;
-                console.log(itemList)
+            .subscribe({
+                next: (itemList: any) => {
+                    this.art = itemList.art;
+                    this.artist = itemList.artist;
+                    console.log(itemList)
+                },
+                error: e => this.error = e
             })
         });
     }

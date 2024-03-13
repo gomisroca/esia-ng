@@ -9,24 +9,28 @@ import { ArtworkStyle } from 'src/models';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit, OnDestroy {
-  private styleSub!: Subscription;
-  public styles!: Array<ArtworkStyle>;
+    private styleSub !: Subscription;
+    public styles !: Array<ArtworkStyle>;
+    public error !: Error;
 
-  constructor(
-    public artService: ArtService,
-  ) { }
+    constructor(
+        public artService: ArtService,
+    ) { }
 
-  ngOnInit(): void {
-    this.styleSub = this.artService
-    .getArtworkStyles()
-    .subscribe((itemList: Array<ArtworkStyle>) => {
-      this.styles = itemList;
-    })
-  }
-
-  ngOnDestroy(): void {
-    if (this.styleSub){
-      this.styleSub.unsubscribe();
+    ngOnInit(): void {
+        this.styleSub = this.artService
+        .getArtworkStyles()
+        .subscribe({
+            next: (itemList: Array<ArtworkStyle>) => {
+                this.styles = itemList;
+            },
+            error: e => this.error = e
+        })
     }
-  }
+
+    ngOnDestroy(): void {
+        if (this.styleSub){
+            this.styleSub.unsubscribe();
+        }
+    }
 }
