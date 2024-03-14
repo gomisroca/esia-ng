@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { GalleryComponent } from './components/gallery/gallery.component';
+import { ArtworksComponent } from './components/artworks/artworks.component';
 import { MenuComponent } from './components/navbar/menu/menu.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { CollectionComponent } from './components/collection/collection.component';
@@ -29,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ArtworkSingleComponent } from './components/artworks/artwork-single/artwork-single.component';
 
 @NgModule({
     imports: [
@@ -51,7 +52,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         AppComponent,
         HomeComponent,
         NavbarComponent,
-        GalleryComponent,
+        ArtworksComponent,
+        ArtworkSingleComponent,
         MenuComponent,
         ArtistsComponent,
         CollectionComponent,

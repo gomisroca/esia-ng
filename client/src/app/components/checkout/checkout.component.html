@@ -14,9 +14,18 @@
                 </a>
                 <span *ngIf="!item.artist">Exhibition Ticket</span>
             </div>
-            <div class="p-2 py-3 text-lg font-bold text-center border-b-2 border-teal-950">
+            <div *ngIf="item.start" class="p-2 py-3 text-lg font-bold text-center border-b-2 border-teal-950">
                 {{item.title}}
-            </div >
+            </div>
+            <div 
+            *ngIf="!item.start"
+            class="font-medium text-md">
+                <a href="/artworks/{{item.id}}">
+                    <div class="py-1 hover:bg-teal-300 transition duration-200">
+                        {{item.title}}
+                    </div>
+                </a>
+            </div>
             <div class="p-2 text-lg text-center">
                 {{ item.price  || item.ticket_price }}EUR
             </div>

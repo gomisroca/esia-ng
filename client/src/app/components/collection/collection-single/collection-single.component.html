@@ -17,7 +17,13 @@
         <div 
         class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 px-4 w-auto lg:px-0 lg:w-[300px] h-fit">
             <div class="pb-3 border-b-2 border-teal-950">
-                <div class="font-semibold">{{art.title}}</div>
+                <div class="font-medium text-md">
+                    <a href="/artworks/{{art.id}}">
+                        <div class="py-1 hover:bg-teal-300 transition duration-200">
+                            {{art.title}}
+                        </div>
+                    </a>
+                </div>
                 <div class="font-semibold text-lg">
                     <a *ngIf="art.artist != null" href="/artists/{{art.artist_id}}">
                         <div class="py-1 hover:bg-teal-300 transition duration-200">

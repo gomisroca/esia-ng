@@ -24,14 +24,23 @@
                         <mat-card-header class=" flex flex-col justify-end z-10 text-right">
                             <mat-card-subtitle>
                                 <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
-                                    <div class="pr-2 py-1 hover:bg-teal-300 transition duration-200">
+                                    <div class="pr-2 py-1 hover:bg-teal-100 transition duration-200">
                                         {{item.artist}}
                                     </div>
                                 </a>
                                 <span *ngIf="!item.artist">Exhibition Ticket</span>
                             </mat-card-subtitle>
                             <mat-card-title style="background-color: #ffffff6c; font-size: 18px; padding-right: 0.5rem;">
-                                {{item.title}}
+                                <div 
+                                *ngIf="!item.start"
+                                class="font-medium text-md">
+                                    <a href="/artworks/{{item.id}}">
+                                        <div class="py-1 hover:bg-teal-300 transition duration-200">
+                                            {{item.title}}
+                                        </div>
+                                    </a>
+                                </div>
+                                <a *ngIf="item.start" href="/exhibitions/{{item.id}}">{{item.title}}</a>
                             </mat-card-title>
                             <div class="flex flex-row justify-end z-10 text-right">
                                 <mat-card-title style="font-size: 18px;">

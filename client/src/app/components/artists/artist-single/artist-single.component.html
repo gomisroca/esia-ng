@@ -2,14 +2,14 @@
 *ngIf="artist"
 class="p-4 text-center overflow-hidden flex flex-col group mt-4 mb-8 mx-auto w-screen lg:px-0 lg:w-[1000px]">
     <div class="bg-teal-50 border-l-4 border-b-4 border-teal-950">
-        <div class="pb-3 mx-4 border-b-2 border-teal-950">
-            <div class="text-xl uppercase font-bold p-1">
+        <div class="p-3 mx-4 border-b-2 border-teal-950">
+            <div class="text-xl uppercase font-bold">
                 {{artist.title}}
             </div>
         </div>
         <div
         *ngIf="artist.birth || artist.description"
-        class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
+        class="p-3 text-xs text-left border-b-2 border-teal-950">
             <div 
             *ngIf="artist.birth"
             class="flex justify-evenly">
@@ -51,8 +51,12 @@ class="text-center mt-4 lg:mt-8">
         </div>
         <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-auto lg:px-0 lg:w-[300px] h-fit">
             <div class="pb-3 border-b-2 border-teal-950">
-                <div class="font-semibold">
-                    {{art.title}}
+                <div class="font-medium text-md">
+                    <a href="/artworks/{{art.id}}">
+                        <div class="py-1 hover:bg-teal-300 transition duration-200">
+                            {{art.title}}
+                        </div>
+                    </a>
                 </div>
                 <div class="font-semibold text-lg">
                     <div>
@@ -87,7 +91,7 @@ class="text-center mt-4 lg:mt-8">
                     </span>
                     <a 
                     class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" 
-                    href="/collection/{{art.style_id}}">
+                    href="/collections/{{art.style_id}}">
                         {{art.style}}
                     </a>
                 </div>
