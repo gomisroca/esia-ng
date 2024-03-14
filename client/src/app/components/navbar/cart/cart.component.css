@@ -1,32 +1,28 @@
+.mat-mdc-card{
+    box-shadow:none !important;
+    background-color: unset;
+}
+.mat-mdc-menu-item{
+    padding: 0px !important;
+}
 .mat-mdc-icon-button {
     padding: 0px !important;
     height: 25px !important;
     width: 50px !important;
 }
-.mat-mdc-card{
-    box-shadow:none !important;
-    background-color: unset;
-    cursor: auto;
-}
-.checkout:hover{
-    background-color: rgb(94 234 212) !important;
-    cursor: pointer !important;
-}
-.checkout .mat-mdc-card:hover{
-    cursor: pointer !important;
-}
-.mat-mdc-menu-panel{
-    border-right: 4px solid rgb(4 47 46);
-    border-bottom: 2px solid rgb(4 47 46);
-    width: 300px !important;
+::ng-deep .mat-mdc-menu-panel{
+    border-left: 4px solid rgb(4 47 46);
+    border-bottom: 4px solid rgb(4 47 46);
+    width: 400px !important;
+    max-width: unset !important;
     box-shadow: none !important;
     border-radius: 0px !important;
 }
+::ng-deep .mat-mdc-menu-content{
+    width: 100% !important;
+}
 ::ng-deep .mat-mdc-button{
     border-radius: 0px !important;
-}
-.mat-mdc-menu-item{
-    padding: 0px !important;
 }
 ::ng-deep .mat-mdc-menu-content {
     padding: 0px !important;
