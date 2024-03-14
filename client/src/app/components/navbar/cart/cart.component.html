@@ -26,9 +26,9 @@
                     src="{{item.thumbnail || item.image}}">
                 </div>
                 <div class="flex flex-col text-right">
-                    <div>
+                    <div class="border-b-2 border-teal-950">
                         <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
-                            <div class="text-black px-2 py-1 hover:bg-teal-100 transition duration-200">
+                            <div class="text-black px-2 py-1 hover:bg-teal-300 transition duration-200">
                                 {{item.artist}}
                             </div>
                         </a>
@@ -44,7 +44,15 @@
                                 </div>
                             </a>
                         </div>
-                        <a *ngIf="item.start" href="/exhibitions/{{item.id}}">{{item.title}}</a>
+                        <div 
+                        *ngIf="item.start"
+                        class="font-medium text-md">
+                            <a href="/exhibitions/{{item.id}}">
+                                <div class="px-2 py-1 hover:bg-teal-300 transition duration-200">
+                                    {{item.title}}
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <div class="flex flex-row justify-end text-right gap-2">
                         <div class="self-center text-md">
@@ -59,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <button class="text-lg font-semibold w-full h-[60px] hover:bg-teal-300 transition duration-200">
+            <button class="text-lg font-medium w-full h-[60px] hover:bg-teal-300 transition duration-200">
                 <a 
                 routerLink="/checkout"
                 class="px-4 h-[60px] flex items-center gap-2">

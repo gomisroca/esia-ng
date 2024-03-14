@@ -1,46 +1,55 @@
 <div class="flex flex-col">
-    <div 
-    *ngFor="let item of cart" 
-    class="flex group my-4 mx-auto flex-col lg:flex-row w-[350px] md:w-[500px] lg:w-[600px] z-20">
-        <img  
-        class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-[350px] md:w-[500px] lg:w-[300px]" 
-        src="{{item.thumbnail || item.image}}">
-        <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-[350px] md:w-[500px] lg:w-[300px] h-fit">
-            <div class="pb-3 border-b-2 border-teal-950">
-                <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
-                    <div class="py-1 hover:bg-teal-300 transition duration-200">
-                        {{item.artist}}
-                    </div>
-                </a>
-                <span *ngIf="!item.artist">Exhibition Ticket</span>
+    <div class="mb-[100px]">
+        <div 
+        *ngFor="let item of cart" 
+        class="flex group my-2 mx-auto flex-col lg:flex-row w-[350px] md:w-[500px] lg:w-[600px] z-20">
+            <img  
+            class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-[350px] md:w-[500px] lg:w-[300px]" 
+            src="{{item.thumbnail || item.image}}">
+            <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-[350px] md:w-[500px] lg:w-[300px] h-fit">
+                <div class="border-b-2 border-teal-950">
+                    <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
+                        <div class="p-2 hover:bg-teal-300 transition duration-200">
+                            {{item.artist}}
+                        </div>
+                    </a>
+                    <span *ngIf="!item.artist">Exhibition Ticket</span>
+                </div>
+                <div 
+                *ngIf="item.start"
+                class="font-medium text-md">
+                    <a href="/exhibitions/{{item.id}}">
+                        <div class="p-2 text-lg hover:bg-teal-300 transition duration-200">
+                            {{item.title}}
+                        </div>
+                    </a>
+                </div>
+                <div 
+                *ngIf="!item.start"
+                class="font-medium text-md">
+                    <a href="/artworks/{{item.id}}">
+                        <div class="p-2 text-lg hover:bg-teal-300 transition duration-200">
+                            {{item.title}}
+                        </div>
+                    </a>
+                </div>
+                <div class="p-2 text-lg text-center">
+                    {{ item.price  || item.ticket_price }}EUR
+                </div>
+                <button 
+                class="hover:bg-red-300 transition duration-200"
+                (click)="removeFromCart(item)"
+                mat-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
             </div>
-            <div *ngIf="item.start" class="p-2 py-3 text-lg font-bold text-center border-b-2 border-teal-950">
-                {{item.title}}
-            </div>
-            <div 
-            *ngIf="!item.start"
-            class="font-medium text-md">
-                <a href="/artworks/{{item.id}}">
-                    <div class="py-1 hover:bg-teal-300 transition duration-200">
-                        {{item.title}}
-                    </div>
-                </a>
-            </div>
-            <div class="p-2 text-lg text-center">
-                {{ item.price  || item.ticket_price }}EUR
-            </div>
-            <button 
-            (click)="removeFromCart(item)"
-            mat-icon-button>
-                <mat-icon>delete</mat-icon>
-            </button>
         </div>
     </div>
-    <button 
-    mat-flat-button
-    style="font-size: 21px; position: fixed; bottom: 0px; border-radius: 0px; border-top: 4px solid teal-950;" class=" w-[350px] md:w-[500px] lg:w-[600px] z-20">
-        <a>
-            Proceed to Payment
-        </a>
-    </button>
+    
+    <a href="/payment">
+        <div class="gap-2 flex items-center fixed bottom-0 text-xl font-medium px-4 bg-teal-50 border-t-4 border-teal-950 rounded-none py-4 w-[350px] md:w-[500px] lg:w-[600px] z-20 hover:bg-teal-300 transition duration-200">
+            <span>Proceed to Payment</span>
+            <mat-icon>arrow_forward</mat-icon>
+        </div>
+    </a>
 </div>
