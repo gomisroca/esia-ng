@@ -22,9 +22,6 @@
     box-shadow:none !important;
     background-color: unset;
 }
-.mat-mdc-button:hover, .mat-mdc-card:hover{
-    background-color: rgb(94 234 212) !important;
-}
 ::ng-deep .mdc-notched-outline__leading{
     border-radius: 0px !important;
 }
@@ -51,9 +48,6 @@
 }
 ::ng-deep .mat-mdc-menu-content {
     padding: 0px !important;
-}
-.mat-mdc-menu-item:hover{
-    background-color: rgb(94 234 212) !important;
 }
 ::ng-deep .mdc-list-item__primary-text{
     font-family: 'Roboto', sans-serif !important;

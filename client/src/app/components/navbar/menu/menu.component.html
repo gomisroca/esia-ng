@@ -30,13 +30,13 @@
                         <a href="/exhibitions/{{exh.id}}">
                             <mat-card class="h-[120px]">
                                 <img  
-                                class="h-[120px] w-full absolute opacity-40" 
+                                class="h-[120px] w-full absolute opacity-40 hover:opacity-50 transition duration-200" 
                                 src="{{exh.image}}">
                                 <mat-card-header class="z-10">
-                                    <mat-card-title style="font-size: 18px;">
+                                    <mat-card-title class="text-black text-lg">
                                         {{exh.title}}
                                     </mat-card-title>
-                                    <mat-card-subtitle>
+                                    <mat-card-subtitle class="text-black">
                                         {{exh.start}} until {{exh.end}}
                                     </mat-card-subtitle>
                                 </mat-card-header>
@@ -44,18 +44,12 @@
                         </a>
                     </button>
                 </div>
-                <button mat-menu-item class="h-[60px]">
-                    <a routerLink="/exhibitions">
-                        <mat-card class="h-[60px]">
-                            <mat-card-header class="z-10">
-                                <mat-card-title 
-                                style="display: flex !important;" 
-                                class="items-center">
-                                    See More
-                                    <mat-icon>arrow_forward</mat-icon>
-                                </mat-card-title>
-                            </mat-card-header>
-                        </mat-card>
+                <button class="text-lg font-medium w-full h-[60px] hover:bg-teal-300 transition duration-200">
+                    <a 
+                    routerLink="/exhibitions"
+                    class="px-4 h-[60px] flex items-center gap-2">
+                        <span>See More</span>
+                        <mat-icon>arrow_forward</mat-icon>
                     </a>
                 </button>
             </ng-template>
