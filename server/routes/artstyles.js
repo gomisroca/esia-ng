@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const axios = require('axios');
 
 const artworkModel = require('../models/artwork');
 const exhibitionModel = require('../models/exhibition');
@@ -77,7 +78,7 @@ router.get('/fetch', async(req, res) => {
         const docsToDelete = styles.filter(doc => !foundIds.includes(doc.id));
         await Promise.all(docsToDelete.map(doc => doc.deleteOne()));
         
-        console.log('Artwork Styles Collection Updated');
+        res.json('Artwork Styles Collection Updated');
     }
     catch(err){
         console.error('Error Fetching Artwork Styles Data:', err.message);
@@ -97,7 +98,7 @@ router.get('/', async(req, res) => {
 // Return Specific
 router.get('/:id', async(req, res) => {
     try{
-        const artworks = await artworkModel.findOne({style_id: req.params.id});
+        const artworks = await artworkModel.find({style_id: req.params.id});
         res.json(artworks);
     }catch(err){
         res.status(500).json({message: err.message})
@@ -108,7 +109,7 @@ router.get('/:id', async(req, res) => {
 router.post('/:id', async(req, res) => {
     // TO DO
     try{
-        const artworks = await artworkModel.findOne({style_id: req.params.id});
+        const artworks = await artworkModel.find({style_id: req.params.id});
         res.json(artworks);
     }catch(err){
         res.status(500).json({message: err.message})

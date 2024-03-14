@@ -95,7 +95,7 @@ router.get('/fetch', async(req, res) => {
         const docsToDelete = artists.filter(doc => !foundIds.includes(doc.id));
         await Promise.all(docsToDelete.map(doc => doc.deleteOne()));
         
-        console.log('Artist Collection Updated');
+        res.json('Artist Collection Updated');
     }
     catch(err){
         console.error('Error Fetching Artist Data:', err.message);

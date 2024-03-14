@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const exhibitionSchema = new Schema({
-    id: Number,
-    title: String,
+    id: { type: Number, unique: true, required: true },
+    title: { type: String, required: true },
     image: String,
     url: String,
     start: String,

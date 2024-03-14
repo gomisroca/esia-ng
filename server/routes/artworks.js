@@ -54,9 +54,7 @@ router.get('/fetch', async(req, res) => {
         console.log(results.length)
 
         const artworks = await artworkModel.find({});
-        const modifiedDocs = [];
         const newDocs = [];
-        const foundIds = [];
 
         for (let i = 0; i < results.length; i++){
             let matchingDoc = artworks.find(doc => doc.id === results[i].id);
@@ -66,23 +64,7 @@ router.get('/fetch', async(req, res) => {
             let price = Math.floor(Math.random() * (10000 - 1000) + 1000) / 100;
             let amount = Math.floor(Math.random() * (5000 - 1000) + 1000);
 
-            if (matchingDoc) {
-                matchingDoc.id = results[i].id
-                matchingDoc.title = results[i].title
-                matchingDoc.artist_id = results[i].artist_id
-                matchingDoc.artist = results[i].artist_title
-                matchingDoc.medium = results[i].medium_display
-                matchingDoc.date = results[i].date_display
-                matchingDoc.origin = results[i].place_of_origin
-                matchingDoc.style_id = results[i].style_id
-                matchingDoc.style = results[i].style_title
-                matchingDoc.thumbnail = thumbnail
-                matchingDoc.fullImage = fullImage
-                matchingDoc.price = price
-                matchingDoc.amount = amount
-
-                modifiedDocs.push(matchingDoc);
-            } else{
+            if (!matchingDoc) {
                 let artwork = new artworkModel({
                     id: results[i].id,
                     title: results[i].title,
@@ -101,15 +83,12 @@ router.get('/fetch', async(req, res) => {
 
                 newDocs.push(artwork);
             }
-            foundIds.push(results[i].id);
         }
-        // Save modified documents
-        await Promise.all(modifiedDocs.map(doc => doc.save()));
 
         // Save new documents
         await Promise.all(newDocs.map(doc => doc.save()));
         
-        console.log('Artwork Collection Updated');
+        res.json('Artwork Collection Updated');
     }
     catch(err){
         console.error('Error Fetching Artwork Data:', err.message);

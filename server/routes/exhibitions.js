@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const axios = require('axios');
 
 const exhibitionModel = require('../models/exhibition');
 
@@ -113,7 +114,7 @@ router.get('/fetch', async(req, res) => {
         const docsToDelete = exhibitions.filter(doc => !foundIds.includes(doc.id));
         await Promise.all(docsToDelete.map(doc => doc.deleteOne()));
         
-        console.log('Exhibition Collection Updated');
+        res.json('Exhibition Collection Updated');
     }
     catch(err){
         console.error('Error Fetching Exhibition Data:', err.message);
