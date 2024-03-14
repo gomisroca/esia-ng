@@ -143,10 +143,11 @@ router.get('/:id', async(req, res) => {
 
 // Update Specific
 router.post('/:id', async(req, res) => {
-    // TO DO
-    try{
+    try{ 
         const exhibition = await exhibitionModel.findOne({ id: req.params.id });
-        res.json(exhibition);
+        exhibition = req.body;
+        exhibition.save();
+        res.status(200).json(exhibition);
     }catch(err){
         res.status(500).json({message: err.message})
     }   

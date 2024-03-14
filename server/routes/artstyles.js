@@ -107,10 +107,11 @@ router.get('/:id', async(req, res) => {
 
 // Update Specific
 router.post('/:id', async(req, res) => {
-    // TO DO
     try{
-        const artworks = await artworkModel.find({style_id: req.params.id});
-        res.json(artworks);
+        const artstyle = await artworkStylesModel.find({id: req.params.id});
+        artstyle = req.body;
+        artstyle.save();
+        res.status(200).json(artstyle);
     }catch(err){
         res.status(500).json({message: err.message})
     }   

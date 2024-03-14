@@ -21,6 +21,7 @@ export class ArtService {
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }
 
+    // Artworks
     getArtworks(): Observable<Array<Artwork>>{
         return this.http
         .get<Array<Artwork>>(`${environment.API_URL}/artworks/`)
@@ -36,6 +37,7 @@ export class ArtService {
         );
     }
 
+    // Artstyles
     getArtworkStyles(): Observable<Array<ArtworkStyle>>{
         return this.http
         .get<Array<ArtworkStyle>>(`${environment.API_URL}/artstyles/`)
@@ -51,6 +53,7 @@ export class ArtService {
         );
     }
 
+    // Exhibitions
     getExhibitions(): Observable<Array<Exhibition>>{
         return this.http
         .get<Array<Exhibition>>(`${environment.API_URL}/exhibitions/`)
@@ -66,6 +69,7 @@ export class ArtService {
         );
     }
 
+    // Artists
     getArtists(): Observable<Array<Artist>>{
         return this.http
         .get<Array<Artist>>(`${environment.API_URL}/artists/`)
@@ -81,4 +85,36 @@ export class ArtService {
         );
     }
 
+    //Updates
+    updateArtwork(id: any, artwork: Artwork): Observable<Artwork>{
+        return this.http
+        .post<Artwork>(`${environment.API_URL}/artworks/${id}`, artwork)
+        .pipe(
+            catchError(this.handleError)
+        );
+    }
+
+    updateArtist(id: any, artist: Artwork): Observable<Artist>{
+        return this.http
+        .post<Artist>(`${environment.API_URL}/artists/${id}`, artist)
+        .pipe(
+            catchError(this.handleError)
+        );
+    }
+    
+    updateArtstyle(id: any, artstyle: ArtworkStyle): Observable<ArtworkStyle>{
+        return this.http
+        .post<ArtworkStyle>(`${environment.API_URL}/artstyles/${id}`, artstyle)
+        .pipe(
+            catchError(this.handleError)
+        );
+    }
+    
+    updateExhibition(id: any, exhibition: Exhibition): Observable<Exhibition>{
+        return this.http
+        .post<Exhibition>(`${environment.API_URL}/exhibitions/${id}`, exhibition)
+        .pipe(
+            catchError(this.handleError)
+        );
+    }
 }

@@ -129,15 +129,11 @@ router.get('/:id', async(req, res) => {
 
 // Update Specific
 router.post('/:id', async(req, res) => {
-    // TO DO
     try{
-        const artworks = await artworkModel.find({ artist_id: req.params.id });
         const artist = await artistModel.findOne({ id: req.params.id });
-        let data = {
-            art: artworks,
-            artist: artist,
-        }
-        res.json(data);
+        artist = req.body;
+        artist.save();
+        res.status(200).json(artist);
     }catch(err){
         res.status(500).json({message: err.message})
     }   
