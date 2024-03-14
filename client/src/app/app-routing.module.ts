@@ -9,6 +9,8 @@ import { ExhibitionSingleComponent } from './components/exhibitions/exhibition-s
 import { ArtistSingleComponent } from './components/artists/artist-single/artist-single.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ArtworkSingleComponent } from './components/artworks/artwork-single/artwork-single.component';
+import { PaymentFormComponent } from './components/checkout/payment-form/payment-form.component';
+import { AddressFormComponent } from './components/checkout/address-form/address-form.component';
 
 const routes: Routes = [
     {
@@ -46,6 +48,14 @@ const routes: Routes = [
     {
         path: 'checkout',
         component: CheckoutComponent,
+    },
+    {
+        path: 'checkout/address',
+        component: AddressFormComponent,
+    },
+    {
+        path: 'checkout/payment',
+        component: PaymentFormComponent,
     },
 ];
 

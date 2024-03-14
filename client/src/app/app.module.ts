@@ -30,6 +30,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ArtworkSingleComponent } from './components/artworks/artwork-single/artwork-single.component';
+import { PaymentFormComponent } from './components/checkout/payment-form/payment-form.component';
+import { AddressFormComponent } from './components/checkout/address-form/address-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -46,7 +49,8 @@ import { ArtworkSingleComponent } from './components/artworks/artwork-single/art
         MatInputModule,
         MatCardModule,
         MatDividerModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        FormsModule
     ],  
     declarations: [
         AppComponent,
@@ -62,7 +66,9 @@ import { ArtworkSingleComponent } from './components/artworks/artwork-single/art
         ExhibitionSingleComponent,
         ArtistSingleComponent,
         CartComponent,
-        CheckoutComponent
+        CheckoutComponent,
+        PaymentFormComponent,
+        AddressFormComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
