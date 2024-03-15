@@ -111,10 +111,25 @@ export class ArtService {
     }
     
     updateExhibition(id: any, exhibition: Exhibition): Observable<Exhibition>{
+        console.log(id)
+        console.log(exhibition)
         return this.http
         .post<Exhibition>(`${environment.API_URL}/exhibitions/${id}`, exhibition)
         .pipe(
             catchError(this.handleError)
         );
+    }
+
+    handleOrder(cart: any): void {
+        cart = JSON.parse(cart);
+        for(const item of cart) {
+            if(item.ticket_amount){
+                item.ticket_amount = item.ticket_amount - 1;
+                this.updateExhibition(item.id, item).subscribe()
+            } else{
+                item.amount = item.amount - 1;
+                this.updateArtwork(item.id, item).subscribe()
+            }
+        }
     }
 }

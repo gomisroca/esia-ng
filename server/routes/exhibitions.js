@@ -143,9 +143,15 @@ router.get('/:id', async(req, res) => {
 
 // Update Specific
 router.post('/:id', async(req, res) => {
-    try{ 
-        const exhibition = await exhibitionModel.findOne({ id: req.params.id });
-        exhibition = req.body;
+    try{
+        let exhibition = await exhibitionModel.findOne({ id: req.params.id });
+        for (const property in exhibition){
+            for(const prop in req.body){
+                if (prop == property){
+                    exhibition[property] = req.body[prop];
+                }
+            }
+        }
         exhibition.save();
         res.status(200).json(exhibition);
     }catch(err){

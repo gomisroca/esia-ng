@@ -131,7 +131,13 @@ router.get('/:id', async(req, res) => {
 router.post('/:id', async(req, res) => {
     try{
         const artist = await artistModel.findOne({ id: req.params.id });
-        artist = req.body;
+        for (const property in artist){
+            for(const prop in req.body){
+                if (prop == property){
+                    artist[property] = req.body[prop];
+                }
+            }
+        }
         artist.save();
         res.status(200).json(artist);
     }catch(err){

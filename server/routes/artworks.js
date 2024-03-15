@@ -119,7 +119,13 @@ router.get('/:id', async(req, res) => {
 router.post('/:id', async(req, res) => {
     try{
         const artwork = await artworkModel.findOne({id: req.params.id});
-        artwork = req.body;
+        for (const property in artwork){
+            for(const prop in req.body){
+                if (prop == property){
+                    artwork[property] = req.body[prop];
+                }
+            }
+        }
         artwork.save();
         res.status(200).json(artwork);
     }catch(err){

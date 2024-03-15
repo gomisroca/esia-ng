@@ -109,7 +109,13 @@ router.get('/:id', async(req, res) => {
 router.post('/:id', async(req, res) => {
     try{
         const artstyle = await artworkStylesModel.find({id: req.params.id});
-        artstyle = req.body;
+        for (const property in artstyle){
+            for(const prop in req.body){
+                if (prop == property){
+                    artstyle[property] = req.body[prop];
+                }
+            }
+        }
         artstyle.save();
         res.status(200).json(artstyle);
     }catch(err){
