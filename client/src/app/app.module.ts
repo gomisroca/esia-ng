@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ArtworksComponent } from './components/artworks/artworks.component';
 import { MenuComponent } from './components/navbar/menu/menu.component';
@@ -54,7 +53,6 @@ import { FormsModule } from '@angular/forms';
     ],  
     declarations: [
         AppComponent,
-        HomeComponent,
         NavbarComponent,
         ArtworksComponent,
         ArtworkSingleComponent,
