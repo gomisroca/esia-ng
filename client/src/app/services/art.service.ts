@@ -124,11 +124,17 @@ export class ArtService {
         cart = JSON.parse(cart);
         for(const item of cart) {
             if(item.ticket_amount){
-                item.ticket_amount = item.ticket_amount - 1;
-                this.updateExhibition(item.id, item).subscribe()
+                this.http
+                .get(`${environment.API_URL}/exhibitions/order/${item.id}`)
+                .pipe(
+                    catchError(this.handleError)
+                );
             } else{
-                item.amount = item.amount - 1;
-                this.updateArtwork(item.id, item).subscribe()
+                this.http
+                .get(`${environment.API_URL}/artworks/order/${item.id}`)
+                .pipe(
+                    catchError(this.handleError)
+                );
             }
         }
     }

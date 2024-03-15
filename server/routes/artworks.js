@@ -115,6 +115,20 @@ router.get('/:id', async(req, res) => {
     }   
 })
 
+router.get('/order/:id', async(req, res) => {
+    try{
+        const artwork = await artworkModel.findOne({id: req.params.id});
+        if(artwork.amount - 1 >= 0){
+            artwork.amount =  artwork.amount - 1;
+        } else{
+            throw new Error('Not enough items in stock.')
+        }
+        res.status(200).json(artwork);
+    }catch(err){
+        res.status(500).json({message: err.message})
+    }   
+})
+
 // Update Specific
 router.post('/:id', async(req, res) => {
     try{
