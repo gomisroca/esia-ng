@@ -1,12 +1,12 @@
-<div *ngIf="art" class=" bg-teal-50 px-4 mt-4 py-1 w-fit mx-auto text-xl uppercase font-bold border-l-4 border-b-4 border-teal-950">
+<div *ngIf="art" class=" bg-teal-50 px-4 md:mt-4 py-1 w-fit mx-auto text-xl uppercase font-bold border-l-4 border-b-4 border-teal-950">
     <p>{{art[0].style}}</p>
 </div>
 <div class="flex flex-col">
     <div 
     *ngFor="let art of art"
-    class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[1000px] z-20">
+    class="flex group my-4 mx-auto flex-col lg:flex-row w-[95%] lg:w-[1000px] z-20">
         <div 
-        class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto lg:w-[700px]">
+        class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto flex items-center justify-center overflow-hidden lg:w-[700px]">
             <lib-ngx-image-zoom
             [thumbImage]=art.thumbnail
             [enableScrollZoom]="true"

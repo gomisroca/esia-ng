@@ -1,6 +1,6 @@
 <div 
 *ngIf="artist"
-class="p-4 text-center overflow-hidden flex flex-col group mt-4 mb-8 mx-auto w-screen lg:px-0 lg:w-[1000px]">
+class="text-center overflow-hidden flex flex-col group mt-4 mb-8 mx-auto w-[95%] lg:w-[1000px]">
     <div class="bg-teal-50 border-l-4 border-b-4 border-teal-950">
         <div class="p-3 mx-4 border-b-2 border-teal-950">
             <div class="text-xl uppercase font-bold">
@@ -40,8 +40,8 @@ class="text-center mt-4 lg:mt-8">
 <div class="flex flex-col">
     <div 
     *ngFor="let art of art"
-    class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[1000px] z-20">
-        <div class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto lg:w-[700px]">
+    class="flex group my-4 mx-auto flex-col lg:flex-row w-[95%] lg:w-[1000px] z-20">
+        <div class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto flex items-center justify-center overflow-hidden lg:w-[700px]">
             <lib-ngx-image-zoom
             [thumbImage]=art.thumbnail
             [enableScrollZoom]="true"
