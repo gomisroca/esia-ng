@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
 })
 export class AddressFormComponent{
     addressDetails = {
+        country: '',
         name: '',
+        phone: '',
         address: '',
+        code: '',
+        town: '',
     };
 
     constructor(private router: Router) { }
 
     submitForm(form: any): void {
         if (form.valid) {
-            console.log('Form data:', this.addressDetails);
             this.router.navigate(['/checkout/payment']);
         }
     }
