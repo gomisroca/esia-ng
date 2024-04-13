@@ -53,7 +53,7 @@ class="text-center mt-4 lg:mt-8">
                 </div>
                 <div class="font-semibold text-lg">
                     <div>
-                        {{art.artist}}
+                        {{art.artist.title}}
                     </div>
                     <div 
                     *ngIf="art.artist == null">
@@ -84,8 +84,8 @@ class="text-center mt-4 lg:mt-8">
                     </span>
                     <a 
                     class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" 
-                    href="/collections/{{art.style_id}}">
-                        {{art.style}}
+                    href="/collections/{{art.style.id}}">
+                        {{art.style.title}}
                     </a>
                 </div>
                 <div class="flex justify-between">

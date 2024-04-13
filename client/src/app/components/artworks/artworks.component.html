@@ -32,11 +32,11 @@
                     <span class="font-bold text-end">{{art.origin}}</span>
                 </div>
                 <div 
-                *ngIf="art.style && art.style_id" 
+                *ngIf="art.style && art.style.id" 
                 class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">Style</span>
-                    <a class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" href="/collections/{{art.style_id}}">
-                        {{art.style}}
+                    <a class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" href="/collections/{{art.style.id}}">
+                        {{art.style.title}}
                     </a>
                 </div>
                 <div class="flex justify-between py-1">

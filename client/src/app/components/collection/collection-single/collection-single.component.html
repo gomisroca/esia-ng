@@ -1,5 +1,5 @@
 <div *ngIf="art" class=" bg-teal-50 px-4 md:mt-4 py-1 w-fit mx-auto text-xl uppercase font-bold border-l-4 border-b-4 border-teal-950">
-    <p>{{art[0].style}}</p>
+    <p>{{artstyle.title}}</p>
 </div>
 <div class="flex flex-col">
     <div 
@@ -17,9 +17,9 @@
                     </a>
                 </div>
                 <div class="font-semibold text-lg">
-                    <a *ngIf="art.artist != null" href="/artists/{{art.artist_id}}">
+                    <a *ngIf="art.artist != null" href="/artists/{{art.artist.id}}">
                         <div class="py-1 hover:bg-teal-300 transition duration-200">
-                            {{art.artist}}
+                            {{art.artist.title}}
                         </div>
                     </a>
                     <div *ngIf="art.artist == null">Artist Unknown</div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex justify-between border-b-2 py-1 border-teal-950/20">
                     <span class="mr-2">Style</span>
-                    <span class="font-bold text-end">{{art.style}}</span>
+                    <span class="font-bold text-end">{{art.style.title}}</span>
                 </div>
                 <div class="flex justify-between py-1">
                     <span class="mr-2">Medium</span>
