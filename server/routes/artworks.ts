@@ -8,15 +8,25 @@ const { Readable } = require('stream');
 const { finished } = require('stream/promises');
 
 const downloadImage = async (imageUrl: string, fileName: string) => {
-  try {
-    const response = await fetch(imageUrl);
-    const destination = path.resolve("public/artworks", fileName + '.jpg');
-    const fileStream = fs.createWriteStream(destination, { flags: 'wx' });
-    await finished(Readable.fromWeb(response.body).pipe(fileStream));
-  } catch (error) {
-    throw new Error(`Error downloading the image: ${error}`);
-  }
+    try {
+        const response = await fetch(imageUrl);
+        const destination = path.resolve("public/artworks", fileName + '.jpg');
+        const fileStream = fs.createWriteStream(destination, { flags: 'wx' });
+        await finished(Readable.fromWeb(response.body).pipe(fileStream));
+    } catch (error) {
+        throw new Error(`Error downloading the image: ${error}`);
+    }
 };
+
+async function getStyle(id: string): Promise<any>{
+    try{
+        const res = await fetch(`https://api.artic.edu/api/v1/category-terms/search?query[term][id]=${id}`)
+        const result = await res.json()
+        return result.data[0]                
+    } catch (err){
+        console.log(err)
+    }
+}
 
 // Fetch from Museum API
 async function getData() : Promise<any>{
@@ -32,19 +42,32 @@ async function getData() : Promise<any>{
             }
         }
         for(const artwork of artworks){
-            if(artwork.artist_title){
+            if(artwork.artist_title && artwork.image_id && artwork.style_id){
                 const artist = await prisma.artist.findUnique({
                     where: {
                         title: artwork.artist_title
                     }
                 })
                 if(artist){            
-                    if(artwork.image_id){
-                        let fullImageUrl = `https://www.artic.edu/iiif/2/${artwork.image_id}/full/1686,/0/default.jpg`;
-                        await downloadImage(fullImageUrl, artwork.image_id)
+                    let fullImageUrl = `https://www.artic.edu/iiif/2/${artwork.image_id}/full/1686,/0/default.jpg`;
+                    await downloadImage(fullImageUrl, artwork.image_id)
+                    const style = await prisma.artworkStyle.findUnique({ 
+                        where: {
+                            id: artwork.style_id
+                        } 
+                    })
+                    if(!style){
+                        const newStyle = await getStyle(artwork.style_id);
+                        if(newStyle){
+                            await prisma.artworkStyle.create({ 
+                                data: {
+                                    id: newStyle.id,
+                                    title: newStyle.title,
+                                    banner: artwork.image_id,
+                                } 
+                            })
+                        }
                     }
-                    // https://api.artic.edu/api/v1/category-terms/search?query[term][id]=${artworks[i].style_id}
-                    // we check if artwork style exists in db, if it doesn't, we create it and assign the fullImageUrl as its thumbnail
                     await prisma.artist.update({
                         where: {
                             title: artwork.artist_title
@@ -57,6 +80,7 @@ async function getData() : Promise<any>{
                                     date: artwork.date_display,
                                     origin: artwork.place_of_origin ? artwork.place_of_origin : null,
                                     image: artwork.image_id,
+                                    styleId: artwork.style_id,
                                     price: Math.floor(Math.random() * (10000 - 1000) + 1000) / 100,
                                     stock: Math.floor(Math.random() * (5000 - 1000) + 1000),
                                 })
@@ -81,6 +105,8 @@ router.get('/', async(req: Request, res: Response) => {
         }
         if(artworks && artworks.length > 0){
             res.status(200).json(artworks);
+        } else{
+            throw new Error('No artworks could be found.')
         }
     }catch(err){
         res.status(500).json({message: err})
