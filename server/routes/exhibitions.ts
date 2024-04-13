@@ -96,19 +96,23 @@ router.get('/:id', async(req, res) => {
     }   
 })
 
-// router.get('/order/:id', async(req, res) => {
-//     try{
-//         const exhibition = await exhibitionModel.findOne({id: req.params.id});
-//         if(exhibition.ticket_amount - 1 >= 0){
-//             exhibition.ticket_amount =  ticket_amount.ticket_amount - 1;
-//         } else{
-//             throw new Error('Not enough items in stock.')
-//         }
-//         res.status(200).json(artwork);
-//     }catch(err){
-//         res.status(500).json({message: err.message})
-//     }   
-// })
+router.get('/order/:id', async(req, res) => {
+    try{
+        const exhibition = await prisma.exhibition.update({
+            where: { 
+                id: parseInt(req.params.id)
+            },
+            data: {
+                stock: {
+                    decrement: 1
+                }
+            }
+        });
+        res.status(200).json(exhibition);
+    }catch(err){
+        res.status(500).json({message: err})
+    }   
+})
 
 // // Update Specific
 // router.post('/:id', async(req, res) => {
