@@ -40,9 +40,8 @@ model Artwork {
 }
 
 model Exhibition {
-    id          String @id @default(uuid())
+    id          Int    @id
     title       String
-    image       String
     url         String
     start       String
     end         String
