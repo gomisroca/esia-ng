@@ -78,15 +78,23 @@ router.get('/', async(req: Request, res: Response) => {
     }   
 })
 
-// // Return Specific
-// router.get('/:id', async(req, res) => {
-//     try{
-//         const exhibition = await exhibitionModel.findOne({ id: req.params.id });
-//         res.json(exhibition);
-//     }catch(err){
-//         res.status(500).json({message: err.message})
-//     }   
-// })
+// Return Specific
+router.get('/:id', async(req, res) => {
+    try{
+        const exhibition = await prisma.exhibition.findUnique({ 
+            where: {
+                id: parseInt(req.params.id)
+            } 
+        });
+        if(exhibition){
+            res.status(200).json(exhibition);
+        } else{
+            throw new Error('No exhibition could be found.')
+        }
+    }catch(err){
+        res.status(500).json({message: err})
+    }   
+})
 
 // router.get('/order/:id', async(req, res) => {
 //     try{

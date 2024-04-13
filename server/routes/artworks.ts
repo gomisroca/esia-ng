@@ -99,7 +99,11 @@ async function getData() : Promise<any>{
 
 router.get('/', async(req: Request, res: Response) => {
     try {
-        let artworks: Artwork[] | undefined = await prisma.artwork.findMany({});
+        let artworks: Artwork[] | undefined = await prisma.artwork.findMany({ 
+            include: { 
+                artist: true
+            }
+        });
         if(artworks.length == 0){
             artworks = await getData();
         }
@@ -124,7 +128,11 @@ router.get('/:id', async(req, res) => {
                 artist: true
             }
         });
-        res.json(artwork);
+        if(artwork){
+            res.status(200).json(artwork);
+        } else{
+            throw new Error('No artwork could be found.')
+        }
     }catch(err){
         res.status(500).json({message: err})
     }   

@@ -62,7 +62,11 @@ router.get('/:id', async(req: Request, res: Response) => {
                 artworks: true
             }
         });
-        res.json(artist);
+        if(artist){
+            res.status(200).json(artist);
+        } else{
+            throw new Error('No artist could be found.')
+        }
     }catch(err){
         res.status(500).json({message: err})
     }   
