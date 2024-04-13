@@ -1,15 +1,14 @@
 export interface Artwork {
     id: number;
     title: string;
-    artist_id: number;
-    artist: string;
+    artist_id: string;
+    artist: Artist;
     medium: string;
     date: string;
     origin: string;
-    style: string;
+    style: ArtworkStyle;
     style_id: string;
-    thumbnail: string;
-    fullImage: string;
+    image: string;
     price: number;
     amount: number;
 }
@@ -23,14 +22,13 @@ export interface ArtworkStyle {
 export interface Exhibition {
     id: number;
     title: string;
+    url: string;
     start: string;
     end: string;
-    image: string;
-    url: string;
     description: string;
     gallery: string;
-    ticket_price: number;
-    ticket_amount: number;
+    price: number;
+    stock: number;
 }
 
 export interface Artist {
