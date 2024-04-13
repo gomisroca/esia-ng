@@ -1,6 +1,6 @@
 <div class="flex flex-col w-[95%] items-center m-auto">
-    <div class="mb-3 border-l-2 border-b-2 mt-4 border-teal-950">
-        <div class="font-semibold p-1 ml-4 text-xl uppercase">Address Details</div>
+    <div class="mb-3 border-l-2 border-b-2 mt-4 border-teal-950 bg-teal-50">
+        <div class="font-semibold p-1 px-4 text-xl uppercase">Address Details</div>
     </div>
     <form 
     class="flex flex-col gap-2 w-full px-1"
@@ -14,7 +14,7 @@
             </label>
             <input 
             type="text"
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="country" 
             name="country" 
             [(ngModel)]="addressDetails.country" 
@@ -33,7 +33,7 @@
             </label>
             <input 
             type="text" 
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="name" 
             name="name" 
             [(ngModel)]="addressDetails.name" 
@@ -53,7 +53,7 @@
             </label>
             <input 
             type="tel" 
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="phone" 
             name="phone" 
             [(ngModel)]="addressDetails.phone" 
@@ -73,7 +73,7 @@
             </label>
             <input 
             type="text" 
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="address" 
             name="address" 
             [(ngModel)]="addressDetails.address" 
@@ -94,7 +94,7 @@
             <input 
             type="text"
             pattern="[0-9]{5}"
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="code" 
             name="code" 
             [(ngModel)]="addressDetails.code" 
@@ -113,7 +113,7 @@
             </label>
             <input 
             type="text"
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="town" 
             name="town" 
             [(ngModel)]="addressDetails.town" 
@@ -126,7 +126,7 @@
         </div>
         <button
         type="submit"
-        class="w-full hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 py-4 mt-4 uppercase font-semibold">
+        class="w-full bg-teal-50 hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 py-4 mt-4 uppercase font-semibold">
             Proceed to Payment Method
         </button>
     </form>

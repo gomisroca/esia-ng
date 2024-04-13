@@ -6,3 +6,6 @@
     width: unset !important;
     height: unset !important;
 }
+::ng-deep .ngxImageZoomLensEnabled {
+    border: 4px solid rgb(4 47 46) !important;
+}

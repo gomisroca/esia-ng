@@ -1,6 +1,6 @@
 <div class="flex flex-col w-[95%] items-center m-auto">
     <div class="mb-3 border-l-2 border-b-2 mt-4 border-teal-950">
-        <div class="font-semibold p-1 ml-4 text-xl uppercase">Payment Details</div>
+        <div class="font-semibold p-1 px-4 bg-teal-50 text-xl uppercase">Payment Details</div>
     </div>
     <form 
     class="flex flex-col gap-2"
@@ -14,7 +14,7 @@
             </label>
             <input 
             type="text" 
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="holder" 
             name="holder" 
             [(ngModel)]="paymentDetails.holder" 
@@ -35,7 +35,7 @@
             <input 
             type="text"
             pattern="[0-9]+"
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="number" 
             name="number" 
             [(ngModel)]="paymentDetails.number" 
@@ -56,7 +56,7 @@
             <input 
             type="text"
             pattern="[0-9]{3}"
-            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950" 
+            class="form-control px-5 py-1 border-l-2 border-b-2 border-teal-950 hover:bg-teal-300 focus:bg-teal-100" 
             id="cvv" 
             name="cvv" 
             [(ngModel)]="paymentDetails.cvv" 
@@ -70,7 +70,7 @@
 
         <button
         type="submit"
-        class="w-full hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 py-4 mt-4 uppercase font-semibold">
+        class="w-full bg-teal-50 hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 py-4 mt-4 uppercase font-semibold">
             Place Order
         </button>
     </form>
