@@ -45,9 +45,9 @@ export class ArtService {
             catchError(this.handleError)
         );
     }
-    getArtworkStylesSingle(id: any): Observable<Array<Artwork>>{
+    getArtworkStylesSingle(id: any): Observable<ArtworkStyle>{
         return this.http
-        .get<Array<Artwork>>(`${environment.API_URL}/artstyles/${id}`)
+        .get<ArtworkStyle>(`${environment.API_URL}/artstyles/${id}`)
         .pipe(
             catchError(this.handleError)
         );

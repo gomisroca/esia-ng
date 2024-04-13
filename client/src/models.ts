@@ -17,6 +17,7 @@ export interface ArtworkStyle {
     id: string;
     title: string;
     banner: string;
+    artworks: Artwork[];
 }
 
 export interface Exhibition {
