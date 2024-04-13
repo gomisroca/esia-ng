@@ -4,7 +4,7 @@ class="flex flex-col group my-4 mx-auto w-[95%] lg:w-[1000px] z-20">
         <div 
         class="border-l-4 border-teal-950">
             <a href={{exh.url}}> 
-                <img src="{{exh.image}}"/>
+                <img src='{{environment.API_URL}}/public/exhibitions/{{exh.id}}.jpg' />
             </a>
         </div>
         <div 
@@ -14,9 +14,12 @@ class="flex flex-col group my-4 mx-auto w-[95%] lg:w-[1000px] z-20">
             </div>
             <div class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
                 <div class="flex justify-between border-teal-950/20">
-                    <span class="font-bold text-lg">{{exh.start}}</span> until  <span class="font-bold text-lg">{{exh.end}}</span>
+                    <span class="font-bold text-lg">{{exh.start | date: 'longDate'}}</span> until  <span class="font-bold text-lg">{{exh.end | date: 'longDate'}}</span>
                 </div>
-                <div *ngIf="exh.description" class="text-base flex justify-between border-t-2 border-b-2 border-teal-950/20 my-1 py-1">
+                <div 
+                *ngIf="exh.description" 
+                class="text-base flex justify-between border-t-2 border-b-2 border-teal-950/20 my-1 py-1" 
+                innerHTML="{{exh.description}}">
                     {{exh.description}}
                 </div>
             </div>

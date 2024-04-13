@@ -41,14 +41,7 @@ class="text-center mt-4 lg:mt-8">
     <div 
     *ngFor="let art of art"
     class="flex group my-4 mx-auto flex-col lg:flex-row w-[95%] lg:w-[1000px] z-20">
-        <div class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto flex items-center justify-center overflow-hidden lg:w-[700px]">
-            <lib-ngx-image-zoom
-            [thumbImage]=art.thumbnail
-            [enableScrollZoom]="true"
-            [enableLens]="true"
-            [maxZoomRatio]="4"
-            ></lib-ngx-image-zoom>
-        </div>
+        <app-artwork-image [imageUrl]="environment.API_URL + '/public/artworks/' + art.image + '.jpg'"></app-artwork-image>
         <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-auto lg:px-0 lg:w-[300px] h-fit">
             <div class="pb-3 border-b-2 border-teal-950">
                 <div class="font-medium text-md">

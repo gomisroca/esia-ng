@@ -34,18 +34,18 @@
                 <div *ngFor="let exh of exhibitions | slice:0:3">
                     <button mat-menu-item class="h-[120px]">
                         <a href="/exhibitions/{{exh.id}}">
-                            <mat-card class="h-[120px] hover:bg-teal-100">
+                            <mat-card class="h-[120px] hover:contrast-125 flex items-center justify-center">
                                 <img  
-                                class="h-[120px] w-full absolute opacity-40 transition duration-200" 
-                                src="{{exh.image}}">
-                                <mat-card-header class="z-10">
+                                class="w-full absolute transition duration-200" 
+                                src='{{environment.API_URL}}/public/exhibitions/{{exh.id}}.jpg' >
+                                <div class="p-2 bg-teal-50/80 z-10">
                                     <mat-card-title class="text-black text-lg">
                                         {{exh.title}}
                                     </mat-card-title>
                                     <mat-card-subtitle class="text-black">
-                                        {{exh.start}} until {{exh.end}}
+                                        {{exh.start | date: 'longDate'}} until {{exh.end | date: 'longDate'}}
                                     </mat-card-subtitle>
-                                </mat-card-header>
+                                </div>
                             </mat-card>
                         </a>
                     </button>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ArtService } from 'src/app/services/art.service';
+import { environment } from 'src/environments/environment';
 import { Exhibition } from 'src/models';
 
 @Component({
@@ -12,6 +13,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     private exhSub !: Subscription;
     public exhibitions !: Array<Exhibition>;
     public error !: Error;
+    public environment = environment;
 
     constructor(
         public artService: ArtService,

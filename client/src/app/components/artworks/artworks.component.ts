@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { ArtService } from 'src/app/services/art.service';
+import { environment } from 'src/environments/environment';
 import { Artwork } from 'src/models';
 
 @Component({
@@ -13,6 +14,7 @@ export class ArtworksComponent implements OnInit, OnDestroy {
     private artSub !: Subscription;
     public art !: Array<Artwork>;
     public error !: Error;
+    public environment = environment;
 
     constructor(
         public artService: ArtService,

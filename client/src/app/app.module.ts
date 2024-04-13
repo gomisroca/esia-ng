@@ -32,6 +32,7 @@ import { ArtworkSingleComponent } from './components/artworks/artwork-single/art
 import { PaymentFormComponent } from './components/checkout/payment-form/payment-form.component';
 import { AddressFormComponent } from './components/checkout/address-form/address-form.component';
 import { FormsModule } from '@angular/forms';
+import { ArtworkImageComponent } from './components/artwork-image/artwork-image.component';
 
 @NgModule({
     imports: [
@@ -55,6 +56,7 @@ import { FormsModule } from '@angular/forms';
         AppComponent,
         NavbarComponent,
         ArtworksComponent,
+        ArtworkImageComponent,
         ArtworkSingleComponent,
         MenuComponent,
         ArtistsComponent,

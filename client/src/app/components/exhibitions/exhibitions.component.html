@@ -5,7 +5,7 @@
         <div 
         class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-[350px] md:w-[600px] lg:w-[700px]">
             <a href="/exhibitions/{{exh.id}}"> 
-                <img src="{{exh.image}}"/>
+                <img src='{{environment.API_URL}}/public/exhibitions/{{exh.id}}.jpg' />
             </a>
         </div>
         <div 
@@ -17,11 +17,12 @@
             </div>
             <div class="p-2 py-3 text-xs text-left border-b-2 border-teal-950">
                 <div class="flex justify-between border-teal-950/20">
-                    <span class="font-bold">{{exh.start}}</span> - <span class="font-bold">{{exh.end}}</span>
+                    <span class="font-bold">{{exh.start | date: 'longDate'}}</span> - <span class="font-bold">{{exh.end | date: 'longDate'}}</span>
                 </div>
                 <div 
                 *ngIf="exh.description" 
-                class="flex justify-between border-t-2 border-b-2 border-teal-950/20 my-1 py-1 text-justify">
+                class="flex justify-between border-t-2 border-b-2 border-teal-950/20 my-1 py-1 text-justify" 
+                innerHTML="{{exh.description}}">
                     {{exh.description}}
                 </div>
             </div>
@@ -29,7 +30,7 @@
                 <button
                 (click)="productToCart(exh)"
                 class="w-full hover:bg-teal-300 transition duration-200 border-b-4 border-teal-950 px-5 py-2 mt-4 uppercase font-semibold">
-                Get Tickets - {{exh.ticket_price.toLocaleString()}}EUR</button>
+                Get Tickets - {{exh.price}}EUR</button>
             </div>
         </div>
     </div>

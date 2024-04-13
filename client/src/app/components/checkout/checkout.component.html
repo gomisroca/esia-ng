@@ -3,9 +3,14 @@
         <div 
         *ngFor="let item of cart" 
         class="flex group my-2 mx-auto flex-col lg:flex-row w-[350px] md:w-[500px] lg:w-[600px] z-20">
-            <img  
+            <img
+            *ngIf="item.image"
             class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-[350px] md:w-[500px] lg:w-[300px]" 
-            src="{{item.thumbnail || item.image}}">
+            src="{{environment.API_URL}}/public/artworks/{{item.image}}.jpg">
+            <img
+            *ngIf="!item.image"
+            class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-[350px] md:w-[500px] lg:w-[300px]" 
+            src="{{environment.API_URL }}/public/exhibitions/{{item.id}}.jpg">
             <div class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-[350px] md:w-[500px] lg:w-[300px] h-fit">
                 <div class="border-b-2 border-teal-950">
                     <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
@@ -34,7 +39,7 @@
                     </a>
                 </div>
                 <div class="p-2 text-lg text-center">
-                    {{ item.price  || item.ticket_price }}EUR
+                    {{ item.price }}EUR
                 </div>
                 <button 
                 class="hover:bg-red-300 transition duration-200"
