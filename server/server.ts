@@ -2,27 +2,22 @@ console.log("current Environment " + process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'development') {
     require('dotenv').config()
 }
-const { DATABASE_URL } = process.env;
-const express = require('express')
+import express from 'express';
 const app = express();
-const mongoose = require('mongoose')
-const cors = require ('cors')
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 var corsOptions = {
     credentials: true,
-    origin: [process.env.CLIENT_URL]
+    origin: process.env.CLIENT_URL
 }
 
 app.use(cors(corsOptions))
-    
-//db
-mongoose.set('strictQuery', false);
-mongoose.connect(DATABASE_URL)
-const db = mongoose.connection
-db.on('error', (error) => console.log('ESIA DB Error: ' + err))
-db.once('open', (success) => console.log('ESIA DB ON'))
-
-app.use(express.json())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use('/public', express.static('public'));
 
 // Routers
 const artistsRouter = require('./routes/artists');
@@ -36,6 +31,4 @@ app.use('/exhibitions', exhibitionsRouter);
 
 app.listen(3030, () => console.log('ESIA SERVER ON'));
 
-module.exports = { 
-  db: mongoose.connection 
-};
+module.exports = app;
