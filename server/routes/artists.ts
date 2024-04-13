@@ -59,7 +59,12 @@ router.get('/:id', async(req: Request, res: Response) => {
                 id: req.params.id
             },
             include: {
-                artworks: true
+                artworks: {
+                    include:{
+                        artist: true,
+                        style: true
+                    }
+                } 
             }
         });
         if(artist){
