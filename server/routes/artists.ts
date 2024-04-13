@@ -43,6 +43,8 @@ router.get('/', async(req: Request, res: Response) => {
         }
         if(artists && artists.length > 0){
             res.status(200).json(artists);
+        } else{
+            throw new Error('No artists could be found.')
         }
     }catch(err){
         res.status(500).json({message: err})
