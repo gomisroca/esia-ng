@@ -45,9 +45,9 @@ export class ArtService {
             catchError(this.handleError)
         );
     }
-    getArtworkStylesSingle(id: any): Observable<Array<Artwork>>{
+    getArtworkStylesSingle(id: any): Observable<ArtworkStyle>{
         return this.http
-        .get<Array<Artwork>>(`${environment.API_URL}/artstyles/${id}`)
+        .get<ArtworkStyle>(`${environment.API_URL}/artstyles/${id}`)
         .pipe(
             catchError(this.handleError)
         );
@@ -77,9 +77,9 @@ export class ArtService {
             catchError(this.handleError)
         );
     }
-    getArtistsSingle(id: any): Observable<any>{
+    getArtistsSingle(id: any): Observable<Artist>{
         return this.http
-        .get<any>(`${environment.API_URL}/artists/${id}`)
+        .get<Artist>(`${environment.API_URL}/artists/${id}`)
         .pipe(
             catchError(this.handleError)
         );
@@ -111,8 +111,6 @@ export class ArtService {
     }
     
     updateExhibition(id: any, exhibition: Exhibition): Observable<Exhibition>{
-        console.log(id)
-        console.log(exhibition)
         return this.http
         .post<Exhibition>(`${environment.API_URL}/exhibitions/${id}`, exhibition)
         .pipe(
@@ -123,7 +121,7 @@ export class ArtService {
     handleOrder(cart: any): void {
         cart = JSON.parse(cart);
         for(const item of cart) {
-            if(item.ticket_amount){
+            if(!item.image){
                 this.http
                 .get(`${environment.API_URL}/exhibitions/order/${item.id}`)
                 .pipe(

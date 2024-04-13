@@ -20,13 +20,16 @@
                 <div 
                 (click) = "$event.stopPropagation()"
                 *ngFor="let item of cart"
-                class="min-h-[125px] border-b-2 border-teal-950 flex flex-row justify-between p-2 gap-2">
-                    <div class="items-center flex">
-                        <img  
-                        class="min-h-[100px] max-h-[125px]" 
-                        src="{{item.thumbnail || item.image}}">
+                class="border-b-2 border-teal-950 flex flex-row justify-between p-2 gap-2">
+                    <div class="overflow-hidden m-auto h-[125px] w-1/2 justify-center items-center flex">
+                        <img
+                        *ngIf="item.image"
+                        src="{{environment.API_URL}}/public/artworks/{{item.image}}.jpg">
+                        <img
+                        *ngIf="!item.image"
+                        src="{{environment.API_URL}}/public/exhibitions/{{item.id}}.jpg">
                     </div>
-                    <div class="flex flex-col text-right">
+                    <div class="flex w-1/2 flex-col text-right">
                         <div class="border-b border-teal-950">
                             <a *ngIf="item.artist" href="/artists/{{item.artist_id}}">
                                 <div class="text-black px-2 py-1 hover:bg-teal-300 transition duration-200">

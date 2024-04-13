@@ -1,2 +1,19 @@
 ###
-GET http://localhost:3030/fetch/art/
+GET http://localhost:3030/artworks/
+###
+GET http://localhost:3030/artstyles/
+###
+GET http://localhost:3030/exhibitions/fetch
+###
+GET http://localhost:3030/artists/
+###
+GET http://localhost:3030/artists/62cf91fc-330d-45c4-91a9-8e763df51b97
+
+###
+GET http://localhost:3030/fetchDB/artworks/
+###
+GET http://localhost:3030/fetchDB/artwork-styles/
+###
+GET http://localhost:3030/fetchDB/exhibitions/
+###
+GET http://localhost:3030/fetchDB/artists/

@@ -1,8 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ArtService } from 'src/app/services/art.service';
+import { environment } from 'src/environments/environment';
 import { Artist, Artwork } from 'src/models';
 
 @Component({
@@ -13,9 +14,10 @@ import { Artist, Artwork } from 'src/models';
 
 export class ArtistSingleComponent implements OnInit, OnDestroy {
     public routeSub !: Subscription;
-    public art : Array<Artwork> = [];
+    public art !: Array<Artwork>;
     public artist !: Artist;
     public error !: Error;
+    public environment = environment
 
     constructor( 
         private artService: ArtService,
@@ -29,8 +31,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
             .getArtistsSingle(params['id'])
             .subscribe({
                 next: (itemList: any) => {
-                    this.art = itemList.art;
-                    this.artist = itemList.artist;
+                    this.art = itemList.artworks;
+                    this.artist = itemList;
                     console.log(itemList)
                 },
                 error: e => this.error = e

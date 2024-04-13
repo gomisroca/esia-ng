@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Artist" ALTER COLUMN "sort_title" DROP NOT NULL,
+ALTER COLUMN "birth" DROP NOT NULL,
+ALTER COLUMN "death" DROP NOT NULL;

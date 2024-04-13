@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ArtService } from 'src/app/services/art.service';
+import { environment } from 'src/environments/environment';
 import { Artwork } from 'src/models';
 
 @Component({
@@ -15,6 +16,7 @@ export class ArtworkSingleComponent implements OnInit, OnDestroy {
     private artSub !: Subscription;
     public art !: Artwork;
     public error !: Error;
+    public environment = environment
 
     constructor(
         public artService: ArtService,

@@ -4,20 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon server.js",
-    "start": "NODE_ENV=production node server.js",
-    "build": "esbuild server.js --platform=node --bundle --minify --outfile=built/server.js"
+    "dev": "NODE_ENV=development nodemon server.ts",
+    "start": "NODE_ENV=production node server.ts",
+    "build": "esbuild server.ts --platform=node --bundle --minify --outfile=built/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.12.1",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^5.5.0",
     "mongoose": "^7.1.1",
+    "multer": "^1.4.5-lts.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

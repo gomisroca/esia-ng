@@ -3,7 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ArtService } from 'src/app/services/art.service';
-import { Artwork } from 'src/models';
+import { environment } from 'src/environments/environment';
+import { Artwork, ArtworkStyle } from 'src/models';
 
 @Component({
     selector: 'app-collection-single',
@@ -14,7 +15,9 @@ import { Artwork } from 'src/models';
 export class CollectionSingleComponent implements OnInit, OnDestroy {
     public routeSub !: Subscription;
     public art !: Array<Artwork>;
+    public artstyle !: ArtworkStyle;
     public error !: Error;
+    public environment = environment
 
     constructor( 
         private artService: ArtService,
@@ -28,8 +31,9 @@ export class CollectionSingleComponent implements OnInit, OnDestroy {
                 this.artService
                 .getArtworkStylesSingle(params['id'])
                 .subscribe({
-                    next: (itemList: Array<Artwork>) => {
-                        this.art = itemList;
+                    next: (itemList: ArtworkStyle) => {
+                        this.artstyle = itemList;
+                        this.art = itemList.artworks;
                         console.log(this.art)
                     },
                     error: e => this.error = e

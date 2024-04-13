@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { ArtService } from 'src/app/services/art.service';
+import { environment } from 'src/environments/environment';
 import { Exhibition } from 'src/models';
 
 @Component({
@@ -13,6 +14,7 @@ export class ExhibitionsComponent implements OnInit, OnDestroy {
     private exhSub !: Subscription;
     public exhibitions !: Array<Exhibition>;
     public error !: Error;
+    public environment = environment;
 
     constructor(
         public artService: ArtService,
@@ -24,7 +26,7 @@ export class ExhibitionsComponent implements OnInit, OnDestroy {
         .getExhibitions()
         .subscribe({
             next: (itemList: Array<Exhibition>) => {
-                this.exhibitions= itemList;
+                this.exhibitions = itemList;
             },
             error: e => this.error = e
         })

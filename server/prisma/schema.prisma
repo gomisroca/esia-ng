@@ -1,0 +1,52 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRES_PRISMA_URL") // uses connection pooling
+}
+
+model Artist {
+    id          String    @id @default(uuid())
+    title       String    @unique
+    sort_title  String?
+    birth       Int?
+    death       Int?
+    description String?
+    artworks    Artwork[]
+}
+
+model ArtworkStyle {
+    id       String    @id
+    title    String
+    banner   String?
+    artworks Artwork[]
+}
+
+model Artwork {
+    id       String        @id @default(uuid())
+    title    String
+    artistId String
+    artist   Artist        @relation(fields: [artistId], references: [id])
+    medium   String?
+    date     String?
+    origin   String?
+    styleId  String?
+    style    ArtworkStyle? @relation(fields: [styleId], references: [id])
+    image    String?
+    price    Int
+    stock    Int
+}
+
+model Exhibition {
+    id          Int    @id
+    title       String
+    url         String
+    start       String
+    end         String
+    description String
+    gallery     String
+    price       Int
+    stock       Int
+}

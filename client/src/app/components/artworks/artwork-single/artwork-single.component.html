@@ -1,15 +1,7 @@
 <div 
 *ngIf="art" 
 class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[1000px] z-20">
-    <div 
-    class="border-t-0 lg:border-t-4 border-l-4 lg:border-l-0 border-teal-950 w-auto lg:w-[700px]">
-        <lib-ngx-image-zoom
-        [thumbImage]=art.thumbnail
-        [enableScrollZoom]="true"
-        [enableLens]="true"
-        [maxZoomRatio]="4"
-        ></lib-ngx-image-zoom>
-    </div>
+    <app-artwork-image [imageUrl]="environment.API_URL + '/public/artworks/' + art.image + '.jpg'"></app-artwork-image>
     <div 
     class="border-l-4 border-b-4 border-teal-950 p-4 text-center bg-teal-50 w-auto lg:px-0 lg:w-[300px] h-fit">
         <div class="pb-3 mx-2 border-b-2 border-teal-950">
@@ -17,9 +9,9 @@ class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[
                 {{art.title}}
             </div>
             <div class="font-semibold text-lg">
-                <a *ngIf="art.artist != null" href="/artists/{{art.artist_id}}">
+                <a *ngIf="art.artist != null" href="/artists/{{art.artist.id}}">
                     <div class="py-1 hover:bg-teal-300 transition duration-200">
-                        {{art.artist}}
+                        {{art.artist.title}}
                     </div>
                 </a>
                 <div *ngIf="art.artist == null">Artist Unknown</div>
@@ -35,11 +27,11 @@ class="flex group my-4 mx-auto flex-col lg:flex-row px-4 w-screen lg:px-0 lg:w-[
                 <span class="font-bold text-end">{{art.origin}}</span>
             </div>
             <div 
-            *ngIf="art.style && art.style_id" 
+            *ngIf="art.style && art.style.id" 
             class="flex justify-between border-b-2 py-1 border-teal-950/20">
                 <span class="mr-2">Style</span>
-                <a class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" href="/collections/{{art.style_id}}">
-                    {{art.style}}
+                <a class="font-bold hover:bg-teal-300 transition duration-200 px-1 text-end" href="/collections/{{art.style.id}}">
+                    {{art.style.title}}
                 </a>
             </div>
             <div class="flex justify-between py-1">

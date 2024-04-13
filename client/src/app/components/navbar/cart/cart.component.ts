@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -8,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CartComponent implements OnInit{
   public cart : any = localStorage.getItem('ESIA_Cart');
+  public environment = environment
 
   constructor(private _snackBar: MatSnackBar) { }
 
